@@ -18,14 +18,11 @@
 
 ### ADDED
 
-- rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, **libtree**, **libsecret**, **taglib**, pahole, nlohmann-json
+- rr debugger, GNU parallel, skopeo, **sdl3**, **sdl3-(image,ttf)**, **sdl2-compat**, fmt, **libtree**, _libsecret_, **taglib**, pahole, nlohmann-json
 
-- **libx264**, **libx265** and **nvenc** support to codecs-extra extension
+- libx264, libx265 and nvenc support to codecs-extra extension
 
-- **libusb**
-
-- libcamera (not sure) (https://github.com/search?q=org%3Aflathub%20libcamera&type=code)
-
+- _libusb_
 
 ### DROPPED
 
@@ -33,13 +30,19 @@
 
 - shellingham, requests-toolbelt, pyexpect, html5lib, clikit, cleo, cachecontrol, cachy, sdl2-(image,ttf)
 
-### ALREADY ADDED
+### TASKS
 
-- libnotify
+- [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
+- [x] libusb [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libusb)
+
 
 # freedesktop-sdk-24.08
 
 ### ADDED
 
-- libnotify [vendor: gnome, version: 0.8.6](https://github.com/search?q=org%3Aflathub+libnotify&type=code)
+- libnotify
+
+### TASKS
+
+- [x] libnotify [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libnotify)
 

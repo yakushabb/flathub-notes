@@ -18,7 +18,7 @@
 
 ### ADDED
 
-- rr debugger, GNU parallel, skopeo, **sdl3**, **sdl3-(image,ttf)**, **sdl2-compat**, fmt, **libtree**, _libsecret_, **taglib**, pahole, nlohmann-json
+- rr debugger, GNU parallel, skopeo, **sdl3**, **sdl3-(image,ttf)**, **sdl2-compat**, fmt, **libtree**, _libsecret_, _taglib_, pahole, nlohmann-json
 
 - libx264, libx265 and nvenc support to codecs-extra extension
 
@@ -32,8 +32,9 @@
 
 ### TASKS
 
-- [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
 - [x] libusb [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libusb)
+- [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
+- [x] taglib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20taglib)
 
 
 # freedesktop-sdk-24.08

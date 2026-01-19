@@ -18,7 +18,7 @@
 
 #### ADDED
 
-- rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, libtree, **libsecret**, taglib, pahole, nlohmann-json
+- rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, libtree, **libsecret**, **taglib**, pahole, nlohmann-json
 
 - **libx264**, **libx265** and **nvenc** support to codecs-extra extension
 

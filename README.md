@@ -1,4 +1,4 @@
-### freedesktop-sdk-25.08
+# freedesktop-sdk-25.08
 
 [BREAKING CHANGES]
 
@@ -16,9 +16,9 @@
 - glibc: 2.42 dropped the deprecated and obsolete termio.h header.
   Anything using it should probably change to termios.h or drop it.
 
-#### ADDED
+### ADDED
 
-- rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, libtree, **libsecret**, **taglib**, pahole, nlohmann-json
+- rr debugger, GNU parallel, skopeo, sdl3, sdl3-(image,ttf), sdl2-compat, fmt, **libtree**, **libsecret**, **taglib**, pahole, nlohmann-json
 
 - **libx264**, **libx265** and **nvenc** support to codecs-extra extension
 
@@ -27,7 +27,7 @@
 - libcamera (not sure) (https://github.com/search?q=org%3Aflathub%20libcamera&type=code)
 
 
-#### DROPPED
+### DROPPED
 
 - vulkan-validation-layers, ruby, tcl, tk, libfdk-aac, gtk-doc, pygobject, python-six
 
@@ -37,9 +37,9 @@
 
 - libnotify
 
-### freedesktop-sdk-24.08
+# freedesktop-sdk-24.08
 
-#### ADDED
+### ADDED
 
 - libnotify [vendor: gnome, version: 0.8.6](https://github.com/search?q=org%3Aflathub+libnotify&type=code)
 

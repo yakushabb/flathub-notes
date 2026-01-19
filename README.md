@@ -4,11 +4,7 @@
 
 - openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension
 
-- intel-vaapi-driver has been removed (replacement is intel-media-driver)
-
-- Dropped elements from Flatpak SDK/Runtime: vulkan-validation-layers, ruby, tcl, tk, libfdk-aac, gtk-doc, pygobject, python-six
-
-- Dropped elements from project: shellingham, requests-toolbelt, pyexpect, html5lib, clikit, cleo, cachecontrol, cachy, sdl2-(image,ttf)
+- **intel-vaapi-driver** has been removed (replacement is intel-media-driver)
 
 - Perl modules now use major.minor versioned directories and no longer uses the patch version. PERL5LIB or PERLLIB variables may need to be updated.
 
@@ -20,3 +16,16 @@
 - glibc: 2.42 dropped the deprecated and obsolete termio.h header.
   Anything using it should probably change to termios.h or drop it.
 
+#### ADDED
+
+- rr debugger, GNU parallel, skopeo, **sdl3**, sdl3-(image,ttf), sdl2-compat, fmt, libtree,
+
+- **libx264**, **libx265** and **nvenc** support to codecs-extra extension
+
+- **libusb**
+
+#### DROPPED
+
+- vulkan-validation-layers, ruby, tcl, tk, libfdk-aac, gtk-doc, pygobject, python-six
+
+- shellingham, requests-toolbelt, pyexpect, html5lib, clikit, cleo, cachecontrol, cachy, sdl2-(image,ttf)

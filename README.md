@@ -26,11 +26,20 @@
 
 - libcamera (not sure) (https://github.com/search?q=org%3Aflathub%20libcamera&type=code)
 
-- libnotify [vendor: gnome, version: 0.8.6](https://github.com/search?q=org%3Aflathub+libnotify&type=code)
-
 
 #### DROPPED
 
 - vulkan-validation-layers, ruby, tcl, tk, libfdk-aac, gtk-doc, pygobject, python-six
 
 - shellingham, requests-toolbelt, pyexpect, html5lib, clikit, cleo, cachecontrol, cachy, sdl2-(image,ttf)
+
+### ALREADY ADDED
+
+- libnotify
+
+### freedesktop-sdk-24.08
+
+#### ADDED
+
+- libnotify [vendor: gnome, version: 0.8.6](https://github.com/search?q=org%3Aflathub+libnotify&type=code)
+

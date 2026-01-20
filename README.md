@@ -36,7 +36,8 @@
 - [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
 - [x] taglib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20taglib)
 - [ ] nlohmann-json
-- [ ] fmtlib/fmt
+- [x] fmtlib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20fmtlib)
+- [ ] fmt
 - [ ] sdl3
 - [ ] sdl2
 

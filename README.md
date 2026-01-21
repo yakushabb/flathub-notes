@@ -18,7 +18,7 @@
 
 ### ADDED
 
-- _rr debugger_, _GNU parallel_, _skopeo_, **sdl3**, **sdl3-(image,ttf)**, **sdl2-compat**, **fmtlib/fmt**, _libtree_, _libsecret_, _taglib_, _pahole_
+- _rr debugger_, _GNU parallel_, _skopeo_, **sdl3**, **sdl3-(image,ttf)**, **sdl2-compat**, _fmtlib/fmt_, _libtree_, _libsecret_, _taglib_, _pahole_
 
 - libx264, libx265 and nvenc support to codecs-extra extension
 
@@ -36,7 +36,7 @@
 - [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
 - [x] taglib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20taglib)
 - [x] fmtlib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20fmtlib)
-- [ ] fmt
+- [ ] FFMPEG and ffmpeg extension [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20ffmpeg)
 - [ ] sdl3
 - [ ] sdl2
 

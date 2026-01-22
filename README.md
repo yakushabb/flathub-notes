@@ -1,8 +1,24 @@
 # freedesktop-sdk-25.08
 
-[BREAKING CHANGES]
+### BREAKING CHANGES
 
-- openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension
+**openh264 and ffmpeg-full extensions**
+
+openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension. [Source](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931)
+
+> "app developers or maintainers will no longer need to add the snippet below to get h.264/h.265 working. It is supposed to be automatically handled by the runtime."
+
+```
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    version: '24.08'
+    directory: lib/ffmpeg
+    add-ld-path: .
+```
+
+
+
+
 
 - **intel-vaapi-driver** has been removed (replacement is intel-media-driver)
 

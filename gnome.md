@@ -1,5 +1,13 @@
 # GNOME Runtime Major Changes
 
+## GNOME 50 (alpha)
+
+**gst-thumbnailer**
+
+https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/master/elements/core/gst-thumbnailers.bst
+
+
+
 ## GNOME 49
 
 GNOME runtime inherits the Freedesktop runtime version 25.08 (See: [Freedesktop SDK components](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tree/release/25.08/elements/components?ref_type=heads)) and provides some extra modules or an updated version of related modules. (See: [GNOME 49 SDK](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/tree/gnome-49/elements/sdk?ref_type=heads)).

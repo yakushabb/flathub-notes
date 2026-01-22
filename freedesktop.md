@@ -2,9 +2,11 @@
 
 ## Freedesktop 25.08
 
+### Added
+
 **openh264 and ffmpeg-full extensions**
 
-_openh264_ and _ffmpeg-full_ extensions have been replaced by _codecs-extra_ runtime extension. App developers or maintainers will no longer need to add the snippet below to get h.264/h.265 working. It is supposed to be automatically handled by the runtime.([*1](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931))
+_openh264_ and _ffmpeg-full_ extensions have been replaced by _codecs-extra_ runtime extension. App developers or maintainers will no longer need to add the snippet below to get h.264/h.265 working. It is supposed to be automatically handled by the runtime. ([*](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931))
 
 ```
 add-extensions:
@@ -13,6 +15,15 @@ add-extensions:
     directory: lib/ffmpeg
     add-ld-path: .
 ```
+
+**GStreamer**
+
+Additionally GST_PLUGIN_SYSTEM_PATH environment variable needs to be updated to include: `%{libdir}/codecs-extra/lib/gstreamer-1.0`. ([*](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931#note_2350019))
+
+```
+GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:%{libdir}/codecs-extra/lib/gstreamer-1.0:%{libdir}/gstreamer-1.0
+```
+
 
 
 

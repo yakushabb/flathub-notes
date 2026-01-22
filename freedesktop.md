@@ -1,12 +1,10 @@
-# freedesktop-sdk-25.08
+# Freedesktop Runtime Major Changes
 
-### BREAKING CHANGES
+## Freedesktop 25.08
 
 **openh264 and ffmpeg-full extensions**
 
-openh264 and ffmpeg-full extensions have been replaced by codecs-extra runtime extension. [Source](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931)
-
-> "app developers or maintainers will no longer need to add the snippet below to get h.264/h.265 working. It is supposed to be automatically handled by the runtime."
+_openh264_ and _ffmpeg-full_ extensions have been replaced by _codecs-extra_ runtime extension. App developers or maintainers will no longer need to add the snippet below to get h.264/h.265 working. It is supposed to be automatically handled by the runtime.([*1](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/931))
 
 ```
 add-extensions:
@@ -56,7 +54,7 @@ add-extensions:
 - [x] SDL [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20sdl)
 
 
-# freedesktop-sdk-24.08
+## Freedesktop 24.08
 
 ### ADDED
 

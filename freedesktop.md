@@ -28,24 +28,17 @@ Additionally GST_PLUGIN_SYSTEM_PATH environment variable needs to be updated to 
 GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:%{libdir}/codecs-extra/lib/gstreamer-1.0:%{libdir}/gstreamer-1.0
 ```
 
+**intel-vaapi-driver** has been removed (replacement is intel-media-driver)
 
+Perl modules now use major.minor versioned directories and no longer uses the patch version. PERL5LIB or PERLLIB variables may need to be updated.
 
-
-
-
-- **intel-vaapi-driver** has been removed (replacement is intel-media-driver)
-
-- Perl modules now use major.minor versioned directories and no longer uses the patch version. PERL5LIB or PERLLIB variables may need to be updated.
-
-- gettext: >=0.24 changed location of m4 files. They are now in /usr/share/gettext/m4
+gettext: >=0.24 changed location of m4 files. They are now in /usr/share/gettext/m4
   Configure scripts etc. needs to updated but this path can also be passed to autoreconf -I /path/to/m4
 
-- automake/autoconf-archive: newer versions perform stricter verifications of flags etc.
+automake/autoconf-archive: newer versions perform stricter verifications of flags etc.
 
-- glibc: 2.42 dropped the deprecated and obsolete termio.h header.
+glibc: 2.42 dropped the deprecated and obsolete termio.h header.
   Anything using it should probably change to termios.h or drop it.
-
-### ADDED
 
 - _rr debugger_, _GNU parallel_, _skopeo_, _sdl3_, _sdl3-(image,ttf)_, _sdl2-compat_, _fmtlib/fmt_, _libtree_, _libsecret_, _taglib_, _pahole_
 
@@ -67,7 +60,6 @@ GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0
 - [x] fmtlib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20fmtlib)
 - [x] FFMPEG and ffmpeg extension [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20ffmpeg)
 - [x] SDL [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20sdl)
-
 
 ## Freedesktop 24.08
 

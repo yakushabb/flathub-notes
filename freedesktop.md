@@ -30,7 +30,7 @@ GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0
 
 **SDL3**
 
-Freedesktop runtime **25.08** and related runtimes provide several SDL modules that might be useful to drop from the build manifest.
+Freedesktop runtime **25.08** and related runtimes provide several SDL modules. It is no longer necessary to compile them, unless the project requires a specific version or configuration of these dependencies.
 
 - [sdl3](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3.bst)
 - [sdl3-image](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3-image.bst)
@@ -38,6 +38,27 @@ Freedesktop runtime **25.08** and related runtimes provide several SDL modules t
 - [sdl2-compat](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-compat.bst)
 - [sdl2-mixer](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-mixer.bst)
 - [sdl2-net](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-net.bst)
+
+**libusb**
+
+Freedesktop runtime **25.08** and related runtimes provide [libuesb/libusb](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libusb.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+
+**libsecret**
+
+Freedesktop runtime **25.08** and related runtimes provide [gnome/libsecret](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libsecret.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+
+**taglib**
+
+Freedesktop runtime **25.08** and related runtimes provide [taglib/taglib](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/taglib.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+
+**fmtlib**
+
+Freedesktop runtime **25.08** and related runtimes provide [fmtlib/fmt](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/fmtlib.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+
+
+-------
+
+
 
 **intel-vaapi-driver** has been removed (replacement is intel-media-driver)
 
@@ -51,11 +72,10 @@ automake/autoconf-archive: newer versions perform stricter verifications of flag
 glibc: 2.42 dropped the deprecated and obsolete termio.h header.
   Anything using it should probably change to termios.h or drop it.
 
-- _rr debugger_, _GNU parallel_, _skopeo_, _sdl3_, _sdl3-(image,ttf)_, _sdl2-compat_, _fmtlib/fmt_, _libtree_, _libsecret_, _taglib_, _pahole_
+- _rr debugger_, _GNU parallel_, _skopeo_, _libtree_, _pahole_
 
 - libx264, libx265 and nvenc support to codecs-extra extension
 
-- _libusb_
 
 ### DROPPED
 
@@ -65,12 +85,12 @@ glibc: 2.42 dropped the deprecated and obsolete termio.h header.
 
 ### TASKS
 
+- [x] FFMPEG and ffmpeg extension [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20ffmpeg)
+- [x] SDL [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20sdl)
 - [x] libusb [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libusb)
 - [x] libsecret [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20libsecret)
 - [x] taglib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20taglib)
 - [x] fmtlib [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20fmtlib)
-- [x] FFMPEG and ffmpeg extension [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20ffmpeg)
-- [x] SDL [related issues](https://github.com/issues?q=is%3Aissue%20is%3Aopen%20archived%3Afalse%20org%3Aflathub%20sdl)
 
 ## Freedesktop 24.08
 

@@ -28,7 +28,7 @@ GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0
 
 **SDL3**
 
-Freedesktop runtime **25.08** and related runtimes provide several SDL modules. It is no longer necessary to compile them, unless the project requires a specific version or configuration of these dependencies.
+Freedesktop runtime **25.08** and related runtimes provide several SDL3/SDL2 modules. It is no longer necessary to compile these modules, unless the project requires a specific version or configuration of these dependencies.
 
 - [sdl3](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3.bst)
 - [sdl3-image](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3-image.bst)

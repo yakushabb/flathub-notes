@@ -16,7 +16,7 @@ GNOME runtime inherits the Freedesktop runtime version 25.08 (See: [Freedesktop 
 
 **blueprint-compiler**
 
-_blueprint-compiler_ (Blueprint is a markup language and compiler for GTK 4 user interfaces) is part of the GNOME runtime starting with version 49. It is no longer necessary to compile, unless the project requires a specific version of this dependency or configuration. See: ([blueprint-compiler.bst](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/gnome-49/elements/sdk/blueprint-compiler.bst)).
+_blueprint-compiler_ (Blueprint is a markup language and compiler for GTK 4 user interfaces) is part of the GNOME runtime starting with version 49. It is no longer necessary to compile, unless the project requires a specific version or configuration of this dependency. See: ([blueprint-compiler.bst](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/gnome-49/elements/sdk/blueprint-compiler.bst)).
 
 **gdk-pixbuf**
 

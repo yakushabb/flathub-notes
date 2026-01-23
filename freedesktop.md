@@ -1,6 +1,8 @@
 # Freedesktop Runtime Major Changes
 
-## Freedesktop 25.08
+## Freedesktop 25.08 
+
+(See: [Freedesktop SDK components](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tree/release/25.08/elements/components?ref_type=heads)).
 
 ### Added
 

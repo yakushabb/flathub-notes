@@ -39,7 +39,7 @@ Freedesktop runtime **25.08** and related runtimes provide several SDL3/SDL2 mod
 
 **libusb**
 
-Freedesktop runtime **25.08** and related runtimes provide [libuesb/libusb](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libusb.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+Freedesktop runtime **25.08** and related runtimes provide [libusb/libusb](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libusb.bst). It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
 
 **libsecret**
 

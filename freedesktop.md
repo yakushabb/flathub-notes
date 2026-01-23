@@ -28,6 +28,17 @@ Additionally GST_PLUGIN_SYSTEM_PATH environment variable needs to be updated to 
 GST_PLUGIN_SYSTEM_PATH: /app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:%{libdir}/codecs-extra/lib/gstreamer-1.0:%{libdir}/gstreamer-1.0
 ```
 
+**SDL3**
+
+Freedesktop runtime **25.08** and related runtimes provide several SDL modules that might be useful to drop from the build manifest.
+
+- [sdl3](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3.bst)
+- [sdl3-image](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3-image.bst)
+- [sdl3-ttf](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl3-ttf.bst)
+- [sdl2-compat](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-compat.bst)
+- [sdl2-mixer](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-mixer.bst)
+- [sdl2-net](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/sdl2-net.bst)
+
 **intel-vaapi-driver** has been removed (replacement is intel-media-driver)
 
 Perl modules now use major.minor versioned directories and no longer uses the patch version. PERL5LIB or PERLLIB variables may need to be updated.

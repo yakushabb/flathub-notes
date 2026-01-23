@@ -2,7 +2,9 @@
 
 ## Freedesktop 25.08 
 
-(See: [Freedesktop SDK components](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tree/release/25.08/elements/components?ref_type=heads)).
+GNOME 49, KDE runtime 6.10 and 5.15-28.0 inherit Freedesktop components.  
+
+- [Freedesktop SDK components](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tree/release/25.08/elements/components?ref_type=heads)
 
 ### Added
 

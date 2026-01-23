@@ -28,3 +28,5 @@ _gdk-pixbuf_ (Image loading library) started to use libglycin/glycin loader. ([g
 ### Dropped
 
 **libmanette**
+
+_libmanette_ (The simple GObject game controller library) dropped from the GNOME runtime starting with version 49.

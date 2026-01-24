@@ -53,25 +53,25 @@ Flathub also provides several [SDL2](https://github.com/flathub/shared-modules/t
 
 Freedesktop runtime **25.08** and related runtimes provide 
 [libusb/libusb](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libusb.bst). 
-It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+In most cases, you don't need to build this module separately, unless your project requires a specific version or a custom configuration.
 
 **libsecret**
 
 Freedesktop runtime **25.08** and related runtimes provide 
 [gnome/libsecret](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/libsecret.bst). 
-It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+In most cases, you don't need to build this module separately, unless your project requires a specific version or a custom configuration.
 
 **taglib**
 
 Freedesktop runtime **25.08** and related runtimes provide 
 [taglib/taglib](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/taglib.bst). 
-It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+In most cases, you don't need to build this module separately, unless your project requires a specific version or a custom configuration.
 
 **fmtlib**
 
 Freedesktop runtime **25.08** and related runtimes provide 
 [fmtlib/fmt](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/release/25.08/elements/components/fmtlib.bst). 
-It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+In most cases, you don't need to build this module separately, unless your project requires a specific version or a custom configuration.
 
 **Other Modules**
 
@@ -85,7 +85,8 @@ It is no longer necessary to compile this module, unless the project requires a 
 
 **sdl2-image and sdl2-ttf**
 
-These modules dropped from Freedesktop runtime version 25.08, hovewer Flathub still provides them via the [shared-modules/SDL2](https://github.com/flathub/shared-modules/tree/master/SDL2) repository.
+These modules dropped from Freedesktop runtime version 25.08, hovewer Flathub still provides them via the 
+[shared-modules/SDL2](https://github.com/flathub/shared-modules/tree/master/SDL2) repository.
 
 **glibc/termio.h**
 

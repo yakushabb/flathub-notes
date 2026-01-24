@@ -10,7 +10,9 @@ which contain extra modules or an updated version of inherited modules.
 
 ### Added
 
-**module name**
+**kirigami-addons**
+
+_kirigami-addons_ (Add-ons for the Kirigami framework) is part of the KDE runtime starting with version 6.10. It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
 
 ### Updated
 

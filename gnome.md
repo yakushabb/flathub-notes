@@ -21,8 +21,7 @@ which contain extra modules or an updated version of inherited modules.
 
 **blueprint-compiler**
 
-[blueprint-compiler](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/gnome-49/elements/sdk/blueprint-compiler.bst) (Blueprint is a markup language and compiler for GTK 4 user interfaces) is part of the GNOME runtime starting with version 49. 
-It is no longer necessary to compile this module, unless the project requires a specific version or configuration of this dependency.
+[blueprint-compiler](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/gnome-49/elements/sdk/blueprint-compiler.bst) (Blueprint is a markup language and compiler for GTK 4 user interfaces) has been included in the GNOME runtime since version 49. In most cases, you don't need to build this module separately, unless your project requires a specific version or a custom configuration.
 
 **gdk-pixbuf**
 

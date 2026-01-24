@@ -30,8 +30,8 @@ It is no longer necessary to compile this module, unless the project requires a 
 
 **webp-pixbuf-loader** gdk-pixbuf now supports webp files via the glycin loader. It is no longer necessary to compile the _webp-pixbuf-loader_ module. For other supported formats, see: [libglycin/glycin](https://gitlab.gnome.org/GNOME/glycin/-/tree/2.0?ref_type=heads). 
 
-### Dropped
+### Updated
 
-**libmanette**
+**libmanette-0-2**
 
-_libmanette_ (The simple GObject game controller library) dropped from the GNOME runtime starting with version 49.
+Starting with GNOME runtime version 49, _libmanette-0-2_ replaced _libmanette-0-1_ (a simple GObject game controller library).

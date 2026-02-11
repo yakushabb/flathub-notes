@@ -1,0 +1,5356 @@
+{
+  "//NOTE": "This is a generated manifest from buildstream files and not usable by flatpak-builder",
+  "modules": [
+    {
+      "name": "bootstrap/symlinks.bst",
+      "x-cpe": {
+        "product": "symlinks"
+      },
+      "sources": [
+        {
+          "type": "dir",
+          "path": "elements/bootstrap/symlinks"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/linux-headers.bst",
+      "x-cpe": {
+        "product": "linux-headers",
+        "version": "6.12.40"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git",
+          "commit": "v6.12.40-0-gd90ecb2b1308b3e362ec4c21ff7cf0a051b445df"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/glibc.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2010-4756",
+          "CVE-2021-3998",
+          "CVE-2022-39046"
+        ],
+        "product": "glibc",
+        "version": "2.42"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://sourceware.org/git/glibc.git",
+          "commit": "glibc-2.42-48-gf122d0b4d145814869bf10c56db1d971bcba55c5"
+        },
+        {
+          "type": "patch",
+          "path": "patches/glibc/fix-dl-dst-lib.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/ncurses.bst",
+      "x-cpe": {
+        "product": "ncurses",
+        "version": "6.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ThomasDickey/ncurses-snapshots.git",
+          "commit": "v6_5-0-ge12a453fc23c5ac586d72af46465e8ba92adb707"
+        },
+        {
+          "type": "patch",
+          "path": "patches/ncurses/always-cross-compile.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/readline.bst",
+      "x-cpe": {
+        "product": "readline",
+        "version": "8.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/readline.git",
+          "commit": "readline-8.3-3-g553d6bb272f26400d6d4d1cac7c1df84c447449b"
+        },
+        {
+          "type": "patch",
+          "path": "patches/readline/readline-disable-rpath.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/bash.bst",
+      "x-cpe": {
+        "vendor": "gnu",
+        "patches": [
+          "CVE-2019-18276"
+        ],
+        "product": "bash",
+        "version": "5.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/bash.git",
+          "commit": "bash-5.3-10-g637f5c8696a6adc9b4519f1cd74aa78492266b7f"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/gzip.bst",
+      "x-cpe": {
+        "product": "gzip",
+        "version": "1.14"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gzip/gzip-1.14.tar.xz",
+          "sha256": "01a7b881bd220bfdf615f97b8718f80bdfd3f6add385b993dcf6efd14e8c0ac6"
+        }
+      ]
+    },
+    {
+      "name": "components/utf-locale.bst",
+      "x-cpe": {
+        "product": "utf-locale"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/gzip.bst",
+      "x-cpe": {
+        "product": "gzip"
+      },
+      "sources": []
+    },
+    {
+      "name": "bootstrap/attr.bst",
+      "x-cpe": {
+        "product": "attr",
+        "version": "2.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/attr.git",
+          "commit": "v2.5.2-0-gee80fdbc11c351fe96bc54a20c2893dde7df8845"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/acl.bst",
+      "x-cpe": {
+        "product": "acl",
+        "version": "2.3.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/acl.git",
+          "commit": "v2.3.2-0-g214c7d146945c31a9dc04cb7094b85053f52a21e"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/pcre2.bst",
+      "x-cpe": {
+        "product": "pcre2",
+        "version": "10.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/PCRE2Project/pcre2.git",
+          "commit": "pcre2-10.46-0-gb2bd4254b379b9d7dc9a3dda060a7e27009ccdff"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zherczeg/sljit.git",
+          "commit": "e51eabbfb8eabc6526f56e4e88b29fb10d1ee048"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libsepol.bst",
+      "x-cpe": {
+        "product": "libsepol",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libsepol-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libselinux.bst",
+      "x-cpe": {
+        "product": "libselinux",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libselinux-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/coreutils.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2016-2781"
+        ],
+        "product": "coreutils",
+        "version": "9.7"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz",
+          "sha256": "e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf"
+        },
+        {
+          "type": "patch",
+          "path": "patches/coreutils/coreutils-no-man-deps.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/tar.bst",
+      "x-cpe": {
+        "vendor": "gnu",
+        "product": "tar",
+        "version": "1.35"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/tar/tar-1.35.tar.xz",
+          "sha256": "4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/diffutils.bst",
+      "x-cpe": {
+        "product": "diffutils",
+        "version": "3.12"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/diffutils/diffutils-3.12.tar.xz",
+          "sha256": "7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/findutils.bst",
+      "x-cpe": {
+        "product": "findutils",
+        "version": "4.10.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz",
+          "sha256": "1387e0b67ff247d2abde998f90dfbf70c1491391a59ddfecb8ae698789f0a4f5"
+        },
+        {
+          "type": "patch",
+          "path": "patches/findutils/no-locate.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gettext.bst",
+      "x-cpe": {
+        "product": "gettext",
+        "version": "0.26"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gettext/gettext-0.26.tar.lz",
+          "sha256": "a0151088dad8942374dc038e461b228352581defd7055e79297f156268b8d508"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/zlib.bst",
+      "x-cpe": {
+        "vendor": "zlib",
+        "product": "zlib",
+        "version": "1.3.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/madler/zlib.git",
+          "commit": "v1.3.1-0-g51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/zstd.bst",
+      "x-cpe": {
+        "product": "zstd",
+        "version": "1.5.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/facebook/zstd.git",
+          "commit": "v1.5.7-0-gf8745da6ff1ad1e7bab384bd1f9d742439278e99"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/file.bst",
+      "x-cpe": {
+        "product": "file",
+        "version": "5.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/file/file.git",
+          "commit": "FILE5_46-0-gb310a0c2d3e4a1c12d579ad5c0266f1092a91340"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/sed.bst",
+      "x-cpe": {
+        "product": "sed",
+        "version": "4.9"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/sed/sed-4.9.tar.xz",
+          "sha256": "6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181"
+        }
+      ]
+    },
+    {
+      "name": "components/libtool.bst",
+      "x-cpe": {
+        "product": "libtool",
+        "version": "2.5.4"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/libtool/libtool-2.5.4.tar.xz",
+          "sha256": "f81f5860666b0bc7d84baddefa60d1cb9fa6fceb2398cc3baca6afaa60266675"
+        }
+      ]
+    },
+    {
+      "name": "components/libfl.bst",
+      "x-cpe": {
+        "product": "libfl"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/gcc-base.bst",
+      "x-cpe": {
+        "product": "gcc-base",
+        "version": "15.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gcc.gnu.org/git/gcc.git",
+          "commit": "releases/gcc-15.2.0-0-g5115c7e447fc07457443df874bf57840e8316d5f"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+          "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz",
+          "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz",
+          "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8"
+        },
+        {
+          "type": "archive",
+          "url": "https://libisl.sourceforge.io/isl-0.27.tar.xz",
+          "sha256": "6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/build-fix-CXXFLAGS_FOR_BUILD-passing.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-enable-riscv.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-no-cross-structure.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-os-dir.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gcc-libs.bst",
+      "x-cpe": {
+        "product": "gcc-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "public-stacks/runtime-minimal.bst",
+      "x-cpe": {
+        "product": "runtime-minimal"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dictionaries.bst",
+      "x-cpe": {
+        "product": "dictionaries",
+        "version": "26.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.libreoffice.org/dictionaries.git",
+          "commit": "libreoffice-26.2.0.2-0-g843b676f1721bbfef5c65d7bb08fa4798e145950"
+        },
+        {
+          "type": "dir",
+          "path": "files/dictionaries/install_dicts.py"
+        },
+        {
+          "type": "dir",
+          "path": "files/dictionaries/th_gen_idx.pl"
+        }
+      ]
+    },
+    {
+      "name": "components/fftw.bst",
+      "x-cpe": {
+        "product": "fftw",
+        "version": "3.3.10"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.fftw.org/fftw-3.3.10.tar.gz",
+          "sha256": "56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467"
+        }
+      ]
+    },
+    {
+      "name": "components/libunistring.bst",
+      "x-cpe": {
+        "product": "libunistring",
+        "version": "1.3"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/libunistring/libunistring-1.3.tar.xz",
+          "sha256": "f245786c831d25150f3dfb4317cda1acc5e3f79a5da4ad073ddca58886569527"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/xz.bst",
+      "x-cpe": {
+        "product": "xz",
+        "version": "5.8.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/tukaani-project/xz.git",
+          "commit": "v5.8.2-0-g3d078b52adbff566ccfc51067dfbf742ecf3ef86"
+        }
+      ]
+    },
+    {
+      "name": "components/icu.bst",
+      "x-cpe": {
+        "product": "international_components_for_unicode",
+        "version": "77.1"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz",
+          "sha256": "588e431f77327c39031ffbb8843c0e3bc122c211374485fa87dc5f3faff24061"
+        },
+        {
+          "type": "patch",
+          "path": "patches/icu/icu-fix-shared-linking.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libxml2.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2016-3709"
+        ],
+        "product": "libxml2",
+        "version": "2.14.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libxml2.git",
+          "commit": "v2.14.6-0-gd23960a130c5bb82779c9405fbbf85e65fb3c57c"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/bzip2.bst",
+      "x-cpe": {
+        "product": "bzip2",
+        "version": "1.0.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://sourceware.org/git/bzip2.git",
+          "commit": "bzip2-1.0.8-0-g6a8690fc8d26c815e798c588f796eabe9d684cf0"
+        },
+        {
+          "type": "patch",
+          "path": "patches/bzip2/soname.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/openssl.bst",
+      "x-cpe": {
+        "vendor": "openssl",
+        "product": "openssl",
+        "version": "3.5.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/openssl/openssl.git",
+          "commit": "openssl-3.5.4-0-gc1eeb9406b6142148f267594197d853403d10208"
+        }
+      ]
+    },
+    {
+      "name": "components/expat.bst",
+      "x-cpe": {
+        "product": "expat",
+        "version": "2.7.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libexpat/libexpat.git",
+          "commit": "R_2_7_1-0-gf9a3eeb3e09fbea04b1c451ffc422ab2f1e45744"
+        }
+      ]
+    },
+    {
+      "name": "components/gdbm.bst",
+      "x-cpe": {
+        "product": "gdbm",
+        "version": "1.25"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gdbm/gdbm-1.25.tar.gz",
+          "sha256": "d02db3c5926ed877f8817b81cd1f92f53ef74ca8c6db543fbba0271b34f393ec"
+        }
+      ]
+    },
+    {
+      "name": "components/libffi.bst",
+      "x-cpe": {
+        "product": "libffi",
+        "version": "3.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libffi/libffi.git",
+          "commit": "v3.5.2-0-ge2eda0cf72a0598b44278cc91860ea402273fa29"
+        }
+      ]
+    },
+    {
+      "name": "components/zlib.bst",
+      "x-cpe": {
+        "product": "zlib"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/sqlite.bst",
+      "x-cpe": {
+        "vendor": "sqlite",
+        "product": "sqlite",
+        "version": "3.50.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/sqlite/sqlite.git",
+          "commit": "version-3.50.4-0-g8ed5e7365e6f12f427910188bbf6b254daad2ef6"
+        }
+      ]
+    },
+    {
+      "name": "components/python3.bst",
+      "x-cpe": {
+        "product": "python",
+        "patches": [
+          "CVE-2019-16056"
+        ],
+        "ignored": [
+          "CVE-2007-4559",
+          "CVE-2015-20107"
+        ],
+        "version": "3.13.11"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/python/cpython.git",
+          "commit": "v3.13.11-0-g627894459a84be3488a1789919679c997056a03c"
+        },
+        {
+          "type": "patch",
+          "path": "patches/python3/python3-multiarch-include.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libxslt.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2022-29824"
+        ],
+        "product": "libxslt",
+        "version": "1.1.43"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libxslt.git",
+          "commit": "v1.1.43-0-g71be7a32637760d769b193d95e0c745ecb86b679"
+        },
+        {
+          "type": "patch",
+          "path": "patches/libxslt/0001-Make-PACKAGE_PREFIX_DIR-honour-arch-triplet-libdir.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/lz4.bst",
+      "x-cpe": {
+        "vendor": "lz4_project",
+        "product": "lz4",
+        "version": "1.10.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/lz4/lz4.git",
+          "commit": "v1.10.0-0-gebb370ca83af193212df4dcbadcc5d87bc0de2f0"
+        }
+      ]
+    },
+    {
+      "name": "components/glslang.bst",
+      "x-cpe": {
+        "product": "glslang",
+        "version": "1.4.321"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g2cd90f9d20df57eac214c148f3aed885372ddcfe"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Tools.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g06ae73a3dc3a03466817d8370355203dac7b79b1"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g2a611a970fdbc41ac2e3e328802aed9985352dca"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g33e02568181e3312f49a3cf33df470bf96ef293a"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-tools/Remove-libSPIRV-Tools-shared.so.patch"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/glslang.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g8a85691a0740d390761a1008b4696f57facd02c4"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Loader.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-gda8d2caad9341ca8c5a7c3deba217d7da50a7c24"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zeux/volk.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-ga8da8ef3368482b0ee9b0ec0c6079a16a89c6924"
+        },
+        {
+          "type": "patch",
+          "path": "patches/vulkan-tools/unbreak_wayland_1_24.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-headers/llvm21.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-tools/llvm21.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gnu-free-fonts.bst",
+      "x-cpe": {
+        "product": "gnu-free-fonts",
+        "version": "20120503"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/freefont/freefont-ttf-20120503.zip",
+          "sha256": "7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af"
+        },
+        {
+          "type": "dir",
+          "path": "files/font-conf/gnu-free-fonts"
+        }
+      ]
+    },
+    {
+      "name": "components/python3-setuptools.bst",
+      "x-cpe": {
+        "product": "python3-setuptools",
+        "version": "80.9.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/pypa/setuptools.git",
+          "commit": "v80.9.0-0-g9c4d383631d3951fcae0afd73b5d08ff5a262976"
+        }
+      ]
+    },
+    {
+      "name": "components/python3-markdown.bst",
+      "x-cpe": {
+        "product": "python3-markdown",
+        "version": "3.10.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Python-Markdown/markdown.git",
+          "commit": "3.10.0-0-g22e89c1fc346f72218a10e392a0c3b4731912522"
+        }
+      ]
+    },
+    {
+      "name": "components/python3-markupsafe.bst",
+      "x-cpe": {
+        "product": "python3-markupsafe",
+        "version": "3.0.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/pallets/markupsafe.git",
+          "commit": "3.0.3-0-g297fc8e356e6836a62087949245d09a28e9f1b13"
+        }
+      ]
+    },
+    {
+      "name": "components/python3-mako.bst",
+      "x-cpe": {
+        "product": "python3-mako",
+        "version": "1.3.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/sqlalchemy/mako.git",
+          "commit": "rel_1_3_10-0-g6e514adcef6194bcf7fedc1b83078e110caaaadf"
+        }
+      ]
+    },
+    {
+      "name": "components/gobject-introspection-base.bst",
+      "x-cpe": {
+        "product": "gobject-introspection",
+        "version": "1.86.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gobject-introspection.git",
+          "commit": "1.86.0-0-g0f1412500b7d9039510b7b36b07c9f8ba0809bfa"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gobject-introspection-tests.git",
+          "commit": "67a03e86da0636c02cac2390ee2f0d5d981875a8"
+        }
+      ]
+    },
+    {
+      "name": "components/python3-packaging.bst",
+      "x-cpe": {
+        "product": "python3-packaging",
+        "version": "25.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/pypa/packaging.git",
+          "commit": "25.0-0-gf58537628042c7f29780b9d33f31597e7fc9d664"
+        }
+      ]
+    },
+    {
+      "name": "components/file.bst",
+      "x-cpe": {
+        "product": "file"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libeconf.bst",
+      "x-cpe": {
+        "product": "libeconf",
+        "version": "0.7.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/openSUSE/libeconf.git",
+          "commit": "v0.7.10-0-g433ebd7316df7cd67c2b0f6e85be7292a2149a87"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/symlinks.bst",
+      "x-cpe": {
+        "product": "symlinks"
+      },
+      "sources": [
+        {
+          "type": "dir",
+          "path": "elements/bootstrap/symlinks"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/linux-headers.bst",
+      "x-cpe": {
+        "product": "linux-headers",
+        "version": "6.12.40"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git",
+          "commit": "v6.12.40-0-gd90ecb2b1308b3e362ec4c21ff7cf0a051b445df"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/glibc.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2010-4756",
+          "CVE-2021-3998",
+          "CVE-2022-39046"
+        ],
+        "product": "glibc",
+        "version": "2.42"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://sourceware.org/git/glibc.git",
+          "commit": "glibc-2.42-48-gf122d0b4d145814869bf10c56db1d971bcba55c5"
+        },
+        {
+          "type": "patch",
+          "path": "patches/glibc/fix-dl-dst-lib.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/ncurses.bst",
+      "x-cpe": {
+        "product": "ncurses",
+        "version": "6.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ThomasDickey/ncurses-snapshots.git",
+          "commit": "v6_5-0-ge12a453fc23c5ac586d72af46465e8ba92adb707"
+        },
+        {
+          "type": "patch",
+          "path": "patches/ncurses/always-cross-compile.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/readline.bst",
+      "x-cpe": {
+        "product": "readline",
+        "version": "8.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/readline.git",
+          "commit": "readline-8.3-3-g553d6bb272f26400d6d4d1cac7c1df84c447449b"
+        },
+        {
+          "type": "patch",
+          "path": "patches/readline/readline-disable-rpath.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/bash.bst",
+      "x-cpe": {
+        "vendor": "gnu",
+        "patches": [
+          "CVE-2019-18276"
+        ],
+        "product": "bash",
+        "version": "5.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/bash.git",
+          "commit": "bash-5.3-10-g637f5c8696a6adc9b4519f1cd74aa78492266b7f"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/attr.bst",
+      "x-cpe": {
+        "product": "attr",
+        "version": "2.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/attr.git",
+          "commit": "v2.5.2-0-gee80fdbc11c351fe96bc54a20c2893dde7df8845"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/acl.bst",
+      "x-cpe": {
+        "product": "acl",
+        "version": "2.3.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/acl.git",
+          "commit": "v2.3.2-0-g214c7d146945c31a9dc04cb7094b85053f52a21e"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/pcre2.bst",
+      "x-cpe": {
+        "product": "pcre2",
+        "version": "10.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/PCRE2Project/pcre2.git",
+          "commit": "pcre2-10.46-0-gb2bd4254b379b9d7dc9a3dda060a7e27009ccdff"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zherczeg/sljit.git",
+          "commit": "e51eabbfb8eabc6526f56e4e88b29fb10d1ee048"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libsepol.bst",
+      "x-cpe": {
+        "product": "libsepol",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libsepol-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libselinux.bst",
+      "x-cpe": {
+        "product": "libselinux",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libselinux-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/coreutils.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2016-2781"
+        ],
+        "product": "coreutils",
+        "version": "9.7"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz",
+          "sha256": "e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf"
+        },
+        {
+          "type": "patch",
+          "path": "patches/coreutils/coreutils-no-man-deps.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/utf-locale.bst",
+      "x-cpe": {
+        "product": "utf-locale"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/gcc-base.bst",
+      "x-cpe": {
+        "product": "gcc-base",
+        "version": "15.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gcc.gnu.org/git/gcc.git",
+          "commit": "releases/gcc-15.2.0-0-g5115c7e447fc07457443df874bf57840e8316d5f"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+          "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz",
+          "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz",
+          "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8"
+        },
+        {
+          "type": "archive",
+          "url": "https://libisl.sourceforge.io/isl-0.27.tar.xz",
+          "sha256": "6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/build-fix-CXXFLAGS_FOR_BUILD-passing.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-enable-riscv.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-no-cross-structure.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-os-dir.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gcc-libs.bst",
+      "x-cpe": {
+        "product": "gcc-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "public-stacks/runtime-minimal.bst",
+      "x-cpe": {
+        "product": "runtime-minimal"
+      },
+      "sources": []
+    },
+    {
+      "name": "bootstrap/zlib.bst",
+      "x-cpe": {
+        "vendor": "zlib",
+        "product": "zlib",
+        "version": "1.3.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/madler/zlib.git",
+          "commit": "v1.3.1-0-g51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf"
+        }
+      ]
+    },
+    {
+      "name": "components/zlib.bst",
+      "x-cpe": {
+        "product": "zlib"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/sqlite.bst",
+      "x-cpe": {
+        "vendor": "sqlite",
+        "product": "sqlite",
+        "version": "3.50.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/sqlite/sqlite.git",
+          "commit": "version-3.50.4-0-g8ed5e7365e6f12f427910188bbf6b254daad2ef6"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/zstd.bst",
+      "x-cpe": {
+        "product": "zstd",
+        "version": "1.5.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/facebook/zstd.git",
+          "commit": "v1.5.7-0-gf8745da6ff1ad1e7bab384bd1f9d742439278e99"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/file.bst",
+      "x-cpe": {
+        "product": "file",
+        "version": "5.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/file/file.git",
+          "commit": "FILE5_46-0-gb310a0c2d3e4a1c12d579ad5c0266f1092a91340"
+        }
+      ]
+    },
+    {
+      "name": "components/file.bst",
+      "x-cpe": {
+        "product": "file"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/util-linux-base.bst",
+      "x-cpe": {
+        "product": "util-linux",
+        "version": "2.41.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git",
+          "commit": "v2.41.3-0-g5305e6c70b274f679329b79c0e1ef5a07e9dc1a6"
+        }
+      ]
+    },
+    {
+      "name": "components/util-linux.bst",
+      "x-cpe": {
+        "product": "util-linux"
+      },
+      "sources": []
+    },
+    {
+      "name": "bootstrap/elfutils.bst",
+      "x-cpe": {
+        "product": "elfutils",
+        "version": "0.193"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://sourceware.org/pub/elfutils/0.193/elfutils-0.193.tar.bz2",
+          "sha256": "7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635"
+        }
+      ]
+    },
+    {
+      "name": "components/elfutils.bst",
+      "x-cpe": {
+        "product": "elfutils"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/glib.bst",
+      "x-cpe": {
+        "product": "glib",
+        "version": "2.84.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/glib.git",
+          "commit": "2.84.4-0-g41eca60845d3fc309af361f5e7f801ba339099aa"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gvdb.git",
+          "commit": "2b42fc75f09dbe1cd1057580b5782b08f2dcb400"
+        }
+      ]
+    },
+    {
+      "name": "components/gobject-introspection.bst",
+      "x-cpe": {
+        "product": "gobject-introspection"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/google-crosextra-caladea.bst",
+      "x-cpe": {
+        "product": "google-crosextra-caladea"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/huertatipografica/Caladea.git",
+          "commit": "336a529cfad3d103d6527752686f8331d13e820a"
+        },
+        {
+          "type": "dir",
+          "path": "files/font-conf/google-crosextra-caladea"
+        }
+      ]
+    },
+    {
+      "name": "components/google-crosextra-carlito.bst",
+      "x-cpe": {
+        "product": "google-crosextra-carlito"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/googlefonts/carlito.git",
+          "commit": "3a810cab78ebd6e2e4eed42af9e8453c4f9b850a"
+        },
+        {
+          "type": "dir",
+          "path": "files/font-conf/google-crosextra-carlito"
+        }
+      ]
+    },
+    {
+      "name": "components/wayland.bst",
+      "x-cpe": {
+        "product": "wayland",
+        "version": "1.24.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
+          "commit": "1.24.0-0-g736d12ac67c20c60dc406dc49bb06be878501f86"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-proto-xorgproto.bst",
+      "x-cpe": {
+        "product": "xorg-proto-xorgproto",
+        "version": "2025.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/proto/xorgproto.git",
+          "commit": "xorgproto-2025.1-0-gc18d2bc22813793bba7f0e4e603c0104d7724802"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xau.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xau",
+        "version": "1.0.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxau.git",
+          "commit": "libXau-1.0.12-0-ga9c65683e68b3a4349afee5d7673b393fb924d2e"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xcb.bst",
+      "x-cpe": {
+        "product": "libxcb",
+        "version": "1.17.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb.git",
+          "commit": "libxcb-1.17.0-0-g622152ee42a310876f10602601206954b8d0613e"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xtrans.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xtrans",
+        "version": "1.6.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxtrans.git",
+          "commit": "xtrans-1.6.0-0-gcf05ba4a10c90da2c63805a5375e983b174e28b0"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-x11.bst",
+      "x-cpe": {
+        "product": "libx11",
+        "version": "1.8.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libx11.git",
+          "commit": "libX11-1.8.12-0-g59917d28a3c41ad22d6fc52e323cafe2cdd596d5"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xext.bst",
+      "x-cpe": {
+        "product": "libxext",
+        "version": "1.3.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxext.git",
+          "commit": "libXext-1.3.6-0-g3826a58d190c2d8093d3586cb33867668cbb4553"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xrender.bst",
+      "x-cpe": {
+        "product": "libxrender",
+        "version": "0.9.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxrender.git",
+          "commit": "libXrender-0.9.12-0-g46e12ff9e8e4d3f0313a2f097df93dbfdc14f92f"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xrandr.bst",
+      "x-cpe": {
+        "product": "libxrandr",
+        "version": "1.5.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxrandr.git",
+          "commit": "libXrandr-1.5.4-0-g512bf0b15b5597c721ff8c61083616ca9040fa72"
+        }
+      ]
+    },
+    {
+      "name": "components/graphite2.bst",
+      "x-cpe": {
+        "product": "graphite2",
+        "version": "1.3.14"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/silnrsi/graphite.git",
+          "commit": "1.3.14-0-g92f59dcc52f73ce747f1cdc831579ed2546884aa"
+        },
+        {
+          "type": "patch",
+          "path": "patches/graphite2/graphite2-1.2.0-cmakepath.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/graphite2/graphite2-disable-tests.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libunwind.bst",
+      "x-cpe": {
+        "product": "libunwind",
+        "version": "1.8.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libunwind/libunwind.git",
+          "commit": "v1.8.3-0-g44aa1a5be2ca68825a17acdf534be4d25cff09b3"
+        }
+      ]
+    },
+    {
+      "name": "components/svt-av1.bst",
+      "x-cpe": {
+        "product": "svt-av1",
+        "version": "3.1.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/AOMediaCodec/SVT-AV1",
+          "commit": "v3.1.2-0-gb33dcc56cc64fcb3b3569094af8ab1d0d81ab4c1"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer.bst",
+      "x-cpe": {
+        "product": "gstreamer",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/harfbuzz.bst",
+      "x-cpe": {
+        "product": "harfbuzz",
+        "version": "11.4.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/harfbuzz/harfbuzz.git",
+          "commit": "11.4.5-0-g22f77d48abc35c1e053d02f1ada0d8f1ce1b8423"
+        }
+      ]
+    },
+    {
+      "name": "components/hicolor-icon-theme.bst",
+      "x-cpe": {
+        "product": "hicolor-icon-theme",
+        "version": "0.17"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xdg/default-icon-theme.git",
+          "commit": "0.17-0-gf522d9d0bb08c395ccc1a140bf693a9e239ef61e"
+        }
+      ]
+    },
+    {
+      "name": "components/json-glib.bst",
+      "x-cpe": {
+        "product": "json-glib",
+        "version": "1.10.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/json-glib.git",
+          "commit": "1.10.8-0-g8273a7d2539c115c0eb1bcc9e8cd9d26fcde204a"
+        }
+      ]
+    },
+    {
+      "name": "components/libdatrie.bst",
+      "x-cpe": {
+        "product": "libdatrie",
+        "version": "0.2.14"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/tlwg/libdatrie.git",
+          "commit": "v0.2.14-0-g45e981da7cd1d448663d901f2c1e180401ce09f1"
+        }
+      ]
+    },
+    {
+      "name": "components/libglvnd.bst",
+      "x-cpe": {
+        "product": "libglvnd",
+        "version": "1.7.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/glvnd/libglvnd.git",
+          "commit": "v1.7.0-0-gfaa23f21fc677af5792825dc30cb1ccef4bf33a6"
+        }
+      ]
+    },
+    {
+      "name": "components/mesa-headers.bst",
+      "x-cpe": {
+        "product": "mesa",
+        "vendor": "mesa3d",
+        "version": "25.3.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/mesa/mesa.git",
+          "commit": "mesa-25.3.3-0-ga9c6420d8c39ce10bcc60a9c32308b7b9b7d34d9"
+        }
+      ]
+    },
+    {
+      "name": "components/libepoxy.bst",
+      "x-cpe": {
+        "product": "libepoxy",
+        "version": "1.5.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/anholt/libepoxy.git",
+          "commit": "1.5.10-0-gc84bc9459357a40e46e2fec0408d04fbdde2c973"
+        }
+      ]
+    },
+    {
+      "name": "components/libogg.bst",
+      "x-cpe": {
+        "product": "libogg",
+        "version": "1.3.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/xiph/ogg.git",
+          "commit": "v1.3.6-0-gbe05b13e98b048f0b5a0f5fa8ce514d56db5f822"
+        }
+      ]
+    },
+    {
+      "name": "components/libvorbis.bst",
+      "x-cpe": {
+        "product": "libvorbis",
+        "version": "1.3.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/xiph/vorbis.git",
+          "commit": "v1.3.7-0-g0657aee69dec8508a0011f47f3b69d7538e9d262"
+        }
+      ]
+    },
+    {
+      "name": "components/libflac.bst",
+      "x-cpe": {
+        "product": "libflac",
+        "version": "1.5.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/flac.git",
+          "commit": "1.5.0-0-g1507800de4b70e21be71f38caa0d9079d0bc6e45"
+        }
+      ]
+    },
+    {
+      "name": "components/opus.bst",
+      "x-cpe": {
+        "vendor": "opus-codec",
+        "product": "opus",
+        "version": "1.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/opus.git",
+          "commit": "v1.5.2-0-gddbe48383984d56acd9e1ab6a090c54ca6b735a6"
+        }
+      ]
+    },
+    {
+      "name": "components/sndfile.bst",
+      "x-cpe": {
+        "product": "libsndfile",
+        "version": "1.2.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsndfile/libsndfile.git",
+          "commit": "1.2.2-0-g72f6af15e8f85157bd622ed45b979025828b7001"
+        }
+      ]
+    },
+    {
+      "name": "components/libpulse.bst",
+      "x-cpe": {
+        "product": "pulseaudio",
+        "version": "17.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git",
+          "commit": "v17.0-0-g1f020889c9aa44ea0f63d7222e8c2b62c3f45f68"
+        },
+        {
+          "type": "patch",
+          "path": "patches/pulseaudio/meson-disable-doxygen.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libseccomp.bst",
+      "x-cpe": {
+        "product": "libseccomp",
+        "version": "2.6.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/seccomp/libseccomp.git",
+          "commit": "v2.6.0-0-gc7c0caed1d04292500ed4b9bb386566053eb9775"
+        }
+      ]
+    },
+    {
+      "name": "components/libthai.bst",
+      "x-cpe": {
+        "product": "libthai",
+        "version": "0.1.30"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/tlwg/libthai.git",
+          "commit": "v0.1.30-0-ge10e6af55634a993e60e80521ab03b1947044f38"
+        }
+      ]
+    },
+    {
+      "name": "components/libvpx.bst",
+      "x-cpe": {
+        "product": "libvpx",
+        "version": "1.15.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://chromium.googlesource.com/webm/libvpx.git",
+          "commit": "v1.15.2-0-gd168454ecd099805c675d4a98c66f4891373302a"
+        }
+      ]
+    },
+    {
+      "name": "components/giflib.bst",
+      "x-cpe": {
+        "product": "giflib",
+        "version": "5.2.2"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/giflib/giflib-5.2.2.tar.gz",
+          "sha256": "be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb"
+        },
+        {
+          "type": "patch",
+          "path": "patches/giflib/no-imagemagick.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/jpeg.bst",
+      "x-cpe": {
+        "product": "libjpeg-turbo",
+        "version": "3.1.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libjpeg-turbo/libjpeg-turbo.git",
+          "commit": "3.1.3-0-gaf9c1c268520a29adf98cad5138dafe612b3d318"
+        }
+      ]
+    },
+    {
+      "name": "components/libpng.bst",
+      "x-cpe": {
+        "product": "libpng",
+        "version": "1.6.54"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/glennrp/libpng.git",
+          "commit": "v1.6.54-0-g02f2b4f4699f0ef9111a6534f093b53732df4452"
+        }
+      ]
+    },
+    {
+      "name": "components/libwebp.bst",
+      "x-cpe": {
+        "product": "libwebp",
+        "version": "1.6.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://chromium.googlesource.com/webm/libwebp.git",
+          "commit": "v1.6.0-0-g4fa21912338357f89e4fd51cf2368325b59e9bd9"
+        }
+      ]
+    },
+    {
+      "name": "components/locales.bst",
+      "x-cpe": {
+        "product": "locales"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/lzip.bst",
+      "x-cpe": {
+        "product": "lzip",
+        "version": "1.25"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download-mirror.savannah.gnu.org/releases/lzip/lzip-1.25.tar.gz",
+          "sha256": "09418a6d8fb83f5113f5bd856e09703df5d37bae0308c668d0f346e3d3f0a56f"
+        }
+      ]
+    },
+    {
+      "name": "components/nano.bst",
+      "x-cpe": {
+        "product": "nano",
+        "version": "8.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/nano.git",
+          "commit": "v8.7-0-gfd531c248eb6b2aa5bd97d42892f8d501fe39ca1"
+        },
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/gnulib.git",
+          "commit": "v0.1-2785-gc01635497d830f181a2607279135b3fff041b936"
+        }
+      ]
+    },
+    {
+      "name": "components/gmp.bst",
+      "x-cpe": {
+        "product": "gmp",
+        "version": "6.3.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+          "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+        }
+      ]
+    },
+    {
+      "name": "components/nettle.bst",
+      "x-cpe": {
+        "product": "nettle",
+        "version": "3.10.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.lysator.liu.se/nettle/nettle.git",
+          "commit": "nettle_3.10.2_release_20250626-0-gd9e983c664772f8cbacba9fa084bc079978e3c98"
+        }
+      ]
+    },
+    {
+      "name": "components/noto-emoji.bst",
+      "x-cpe": {
+        "product": "noto-emoji",
+        "version": "2.051"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/googlefonts/noto-emoji.git",
+          "commit": "v2.051-0-g8998f5dd683424a73e2314a8c1f1e359c19e8742"
+        }
+      ]
+    },
+    {
+      "name": "components/npth.bst",
+      "x-cpe": {
+        "product": "npth",
+        "version": "1.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/npth.git",
+          "commit": "npth-1.8-0-g64905e765aad9de6054ef70a97fc30bd992ce999"
+        }
+      ]
+    },
+    {
+      "name": "components/nspr.bst",
+      "x-cpe": {
+        "product": "netscape_portable_runtime",
+        "version": "4.37"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://archive.mozilla.org/pub/nspr/releases/v4.37/src/nspr-4.37.tar.gz",
+          "sha256": "5f9344ed0e31855bd38f88b33c9d9ab94f70ce547ef3213e488d1520f61840fa"
+        }
+      ]
+    },
+    {
+      "name": "components/which.bst",
+      "x-cpe": {
+        "product": "which",
+        "version": "2.21"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://carlowood.github.io/which/which-2.21.tar.gz",
+          "sha256": "f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad"
+        }
+      ]
+    },
+    {
+      "name": "components/alsa-lib.bst",
+      "x-cpe": {
+        "product": "alsa-lib",
+        "version": "1.2.14"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/alsa-project/alsa-lib.git",
+          "commit": "v1.2.14-0-g81d70a27136840fa8fb1bec6eb8e04fc1475a380"
+        },
+        {
+          "type": "patch",
+          "path": "patches/alsa-lib/sysconfig-ostree.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/aspell.bst",
+      "x-cpe": {
+        "patches": [
+          "CVE-2019-25051"
+        ],
+        "product": "aspell",
+        "version": "0.60.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/aspell.git",
+          "commit": "rel-0.60.8.1-0-g061f2e450d41808f7bd8c6eb84b2256455ae8c26"
+        },
+        {
+          "type": "patch",
+          "path": "patches/aspell/gcc15.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libtasn1.bst",
+      "x-cpe": {
+        "product": "libtasn1",
+        "version": "4.21.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnutls/libtasn1.git",
+          "commit": "v4.21.0-0-g4c9554ea0307678abc7952ee301aa5f68aa64aad"
+        },
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/gnulib.git",
+          "commit": "e93789db7e86c51d6cb9683ea508e676a55cdefa"
+        }
+      ]
+    },
+    {
+      "name": "components/p11-kit.bst",
+      "x-cpe": {
+        "product": "p11-kit",
+        "version": "0.26.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/p11-glue/p11-kit.git",
+          "commit": "0.26.0-0-g680ebb0f925bc912c32372b04413706ac9ddee26"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/p11-glue/pkcs11-json.git",
+          "commit": "6d56219d6cd640f3629fb621b01068d7e768efc6"
+        }
+      ]
+    },
+    {
+      "name": "components/ca-certificates.bst",
+      "x-cpe": {
+        "product": "ca-certificates"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://src.fedoraproject.org/rpms/ca-certificates.git",
+          "commit": "ca-certificates-2010_63-3_fc14-171-g7ea76062abd4f364ff7b98aa42174d7c34cf9d25"
+        },
+        {
+          "type": "git",
+          "url": "https://src.fedoraproject.org/rpms/ca-certificates.git",
+          "commit": "91af9300e9ca630b72f466b317bc489446838db8"
+        }
+      ]
+    },
+    {
+      "name": "components/libnghttp2.bst",
+      "x-cpe": {
+        "product": "libnghttp2",
+        "version": "1.66.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/nghttp2/nghttp2.git",
+          "commit": "v1.66.0-0-gac22e0efe3f82f43c1366961c89a50ee821cfba3"
+        }
+      ]
+    },
+    {
+      "name": "components/libidn2.bst",
+      "x-cpe": {
+        "product": "libidn2",
+        "version": "2.3.8"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/libidn/libidn2-2.3.8.tar.gz",
+          "sha256": "f557911bf6171621e1f72ff35f5b1825bb35b52ed45325dcdee931e5d3c0787a"
+        }
+      ]
+    },
+    {
+      "name": "components/libpsl.bst",
+      "x-cpe": {
+        "product": "libpsl",
+        "version": "0.21.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/rockdaboot/libpsl.git",
+          "commit": "0.21.5-0-gba4c49a205408845834b1648ad23c15ee09f722b"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/publicsuffix/list.git",
+          "commit": "5db9b65997e3c9230ac4353b01994c2ae9667cb9"
+        }
+      ]
+    },
+    {
+      "name": "components/curl.bst",
+      "x-cpe": {
+        "product": "curl",
+        "version": "8.15.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/curl/curl.git",
+          "commit": "curl-8_15_0-0-gcfbfb65047e85e6b08af65fe9cdbcf68e9ad496a"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/grep.bst",
+      "x-cpe": {
+        "product": "grep",
+        "version": "3.12"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/grep/grep-3.12.tar.xz",
+          "sha256": "2649b27c0e90e632eadcd757be06c6e9a4f48d941de51e7c0f83ff76408a07b9"
+        }
+      ]
+    },
+    {
+      "name": "components/cracklib.bst",
+      "x-cpe": {
+        "product": "cracklib",
+        "version": "2.10.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/cracklib/cracklib.git",
+          "commit": "v2.10.3-0-ge73d5db1789d198b5f9ec44b68b9c775c3e6c042"
+        }
+      ]
+    },
+    {
+      "name": "components/zstd.bst",
+      "x-cpe": {
+        "product": "zstd"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libarchive.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2025-1632"
+        ],
+        "product": "libarchive",
+        "version": "3.8.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libarchive/libarchive.git",
+          "commit": "v3.8.5-0-gdd897a78c662a2c7a003e7ec158cea7909557bee"
+        }
+      ]
+    },
+    {
+      "name": "components/libcap.bst",
+      "x-cpe": {
+        "product": "libcap",
+        "version": "2.77"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/libs/libcap/libcap.git",
+          "commit": "libcap-2.77-0-g3b2513a1ba696f01d31edfa93f35c30b379cc70e"
+        },
+        {
+          "type": "patch",
+          "path": "patches/libcap/libcap-disable-tests.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libgpg-error.bst",
+      "x-cpe": {
+        "product": "libgpg-error",
+        "version": "1.56"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libgpg-error.git",
+          "commit": "libgpg-error-1.56-0-gb3b68bde07b02dd2b6d78356ac90baa652a309fa"
+        }
+      ]
+    },
+    {
+      "name": "components/libgcrypt.bst",
+      "x-cpe": {
+        "product": "libgcrypt",
+        "version": "1.11.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libgcrypt.git",
+          "commit": "libgcrypt-1.11.2-0-g737cc63600146f196738a6768679eb016cf866e9"
+        }
+      ]
+    },
+    {
+      "name": "components/systemd-base.bst",
+      "x-cpe": {
+        "vendor": "freedesktop",
+        "product": "systemd",
+        "version": "257"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/systemd/systemd.git",
+          "commit": "v257.10-0-g32ba9cee3c9cef33b7081768e8ff58b410a523da"
+        },
+        {
+          "type": "dir",
+          "path": "files/systemd/90-sysupdate.preset"
+        }
+      ]
+    },
+    {
+      "name": "components/systemd-libs.bst",
+      "x-cpe": {
+        "product": "systemd-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libyaml.bst",
+      "x-cpe": {
+        "product": "libyaml",
+        "version": "0.2.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/yaml/libyaml.git",
+          "commit": "0.2.5-0-g2c891fc7a770e8ba2fec34fc6b545c672beb37e6"
+        }
+      ]
+    },
+    {
+      "name": "components/brotli.bst",
+      "x-cpe": {
+        "product": "brotli",
+        "version": "1.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/google/brotli.git",
+          "commit": "v1.2.0-0-g028fb5a23661f123017c060daa546b55cf4bde29"
+        }
+      ]
+    },
+    {
+      "name": "components/freetype.bst",
+      "x-cpe": {
+        "product": "freetype2",
+        "vendor": "freetype",
+        "version": "2.14.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/freetype/freetype2.git",
+          "commit": "VER-2-14-1-0-g526ec5c47b9ebccc4754c85ac0c0cdf7c85a5e9b"
+        },
+        {
+          "type": "patch",
+          "path": "patches/freetype/enable-cleartype-subpixel.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/fontconfig.bst",
+      "x-cpe": {
+        "product": "fontconfig",
+        "version": "2.17.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/fontconfig/fontconfig.git",
+          "commit": "2.17.1-0-g6d0a98982ec351c165c9224c8b7dbdfca3010e47"
+        }
+      ]
+    },
+    {
+      "name": "components/lzo.bst",
+      "x-cpe": {
+        "product": "lzo",
+        "version": "2.10"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz",
+          "sha256": "c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072"
+        }
+      ]
+    },
+    {
+      "name": "components/pixman.bst",
+      "x-cpe": {
+        "product": "pixman",
+        "version": "0.46.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/pixman/pixman.git",
+          "commit": "pixman-0.46.4-0-g9cc163c9da0fb4da430641715313d95a6ec466d9"
+        }
+      ]
+    },
+    {
+      "name": "components/cairo.bst",
+      "x-cpe": {
+        "product": "cairo",
+        "version": "1.18.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/cairo/cairo.git",
+          "commit": "1.18.4-0-g4541e0cd3a751b85e52e2a83d02ac6145a5efa85"
+        }
+      ]
+    },
+    {
+      "name": "components/libxmlb.bst",
+      "x-cpe": {
+        "product": "libxmlb",
+        "version": "0.3.24"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/hughsie/libxmlb.git",
+          "commit": "0.3.24-0-gd004cca465e5c5af3ce02c02a15978ff02b510c3"
+        }
+      ]
+    },
+    {
+      "name": "components/libtiff.bst",
+      "x-cpe": {
+        "patches": [
+          "CVE-2022-48281"
+        ],
+        "product": "libtiff",
+        "version": "4.7.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/libtiff/libtiff.git",
+          "commit": "v4.7.0-0-g9dff73bebc5661f2dace6f16e14cf9e857172f4e"
+        }
+      ]
+    },
+    {
+      "name": "components/shared-mime-info.bst",
+      "x-cpe": {
+        "product": "shared-mime-info",
+        "version": "2.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xdg/shared-mime-info.git",
+          "commit": "2.4-0-g9a6d6b8e963935f145f3a1ef446552de6996dada"
+        }
+      ]
+    },
+    {
+      "name": "components/gdk-pixbuf.bst",
+      "x-cpe": {
+        "product": "gdk-pixbuf",
+        "version": "2.44.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gdk-pixbuf.git",
+          "commit": "2.44.4-0-gc9e6d11cbfa085d7b59dd6ad3b1cbfa26348ce13"
+        }
+      ]
+    },
+    {
+      "name": "components/gnutls.bst",
+      "x-cpe": {
+        "product": "gnutls",
+        "version": "3.8.11"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnutls/gnutls.git",
+          "commit": "3.8.11-0-gb841c70e101311f5711ad9fd5d24d33684c2c76d"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gnutls/drop-submodule.patch"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnutls/cligen.git",
+          "commit": "59911854af60377b045ec8db88ae969b5bad1f66"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gnutls/cli-codegen-no-passwd.patch"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.com/libidn/gnulib-mirror.git",
+          "commit": "05c63bc908a67a316fea29ddf4c702d89cf5bdec"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnutls/libtasn1.git",
+          "commit": "6b45b25e94ea538192cc0f97e9ad57171d1c6374"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnutls/nettle.git",
+          "commit": "40178e78ae73ec2a8cda8cd53664df9c73ac1961"
+        }
+      ]
+    },
+    {
+      "name": "components/gsettings-desktop-schemas.bst",
+      "x-cpe": {
+        "product": "gsettings-desktop-schemas",
+        "version": "49.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git",
+          "commit": "49.1-0-g476d0e766396e1e99b9048fa9d0854482d9da7e0"
+        }
+      ]
+    },
+    {
+      "name": "components/duktape.bst",
+      "x-cpe": {
+        "product": "duktape",
+        "version": "2.7.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/svaarala/duktape/releases/download/v2.7.0/duktape-2.7.0.tar.xz",
+          "sha256": "90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890"
+        },
+        {
+          "type": "patch",
+          "path": "patches/duktape/duktape-lm.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libproxy.bst",
+      "x-cpe": {
+        "product": "libproxy",
+        "version": "0.5.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libproxy/libproxy.git",
+          "commit": "0.5.12-0-g99da01926b1b1e303a4d2331bbd74bed424863e7"
+        }
+      ]
+    },
+    {
+      "name": "components/glib-networking.bst",
+      "x-cpe": {
+        "product": "glib-networking",
+        "version": "2.80.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/glib-networking.git",
+          "commit": "2.80.1-0-g1417a8dd98c46c208853c5ed95de61c384acea21"
+        }
+      ]
+    },
+    {
+      "name": "components/fribidi.bst",
+      "x-cpe": {
+        "product": "fribidi",
+        "version": "1.0.16"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/fribidi/fribidi.git",
+          "commit": "v1.0.16-0-g68162babff4f39c4e2dc164a5e825af93bda9983"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xft.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xft",
+        "version": "2.3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxft.git",
+          "commit": "libXft-2.3.9-0-gf4805c8645914cbdcfd42e71051ba3f8fc664ef5"
+        }
+      ]
+    },
+    {
+      "name": "components/pango.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2019-1010238"
+        ],
+        "product": "pango",
+        "version": "1.56.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/pango.git",
+          "commit": "1.56.4-0-g5f589a7e0e61dca3f976da172cf55743ace77a38"
+        }
+      ]
+    },
+    {
+      "name": "components/dav1d.bst",
+      "x-cpe": {
+        "product": "dav1d",
+        "version": "1.5.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://code.videolan.org/videolan/dav1d.git",
+          "commit": "1.5.1-0-g42b2b24fb8819f1ed3643aa9cf2a62f03868e3aa"
+        }
+      ]
+    },
+    {
+      "name": "components/librsvg.bst",
+      "x-cpe": {
+        "product": "librsvg",
+        "version": "2.61.3"
+      }
+    },
+    {
+      "name": "components/appstream.bst",
+      "x-cpe": {
+        "product": "appstream",
+        "version": "1.0.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ximion/appstream.git",
+          "commit": "v1.0.6-0-gf3ccabfa4d9582b7b0baa90d79899eb93b28b10c"
+        }
+      ]
+    },
+    {
+      "name": "components/dbus-base.bst",
+      "x-cpe": {
+        "product": "d-bus",
+        "version": "1.16.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/dbus/dbus.git",
+          "commit": "dbus-1.16.2-0-g958bf9db2100553bcd2fe2a854e1ebb42e886054"
+        }
+      ]
+    },
+    {
+      "name": "components/libdbus.bst",
+      "x-cpe": {
+        "product": "libdbus"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dbus-tools.bst",
+      "x-cpe": {
+        "product": "dbus-tools"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/at-spi2-core.bst",
+      "x-cpe": {
+        "vendor": "gnome",
+        "product": "at-spi2-core",
+        "version": "2.54.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/at-spi2-core.git",
+          "commit": "AT_SPI2_CORE_2_54_0-0-g2b2085e3bb98c35cfeaf33a9b2852c610c3a9b7b"
+        }
+      ]
+    },
+    {
+      "name": "components/bluez-base.bst",
+      "x-cpe": {
+        "product": "bluez",
+        "version": "5.85"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/bluetooth/bluez.git",
+          "commit": "5.85-0-gf6f6abf8d5ccf3c4bc42cf578c4ef7ab6c2ec9d9"
+        }
+      ]
+    },
+    {
+      "name": "components/bluez-libs.bst",
+      "x-cpe": {
+        "product": "bluez-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/compat-vulkan-link.bst",
+      "x-cpe": {
+        "product": "compat-vulkan-link"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dejavu-fonts.bst",
+      "x-cpe": {
+        "product": "dejavu-fonts",
+        "version": "2.37"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2",
+          "sha256": "fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/gawk.bst",
+      "x-cpe": {
+        "product": "gawk",
+        "version": "5.3.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/gawk.git",
+          "commit": "gawk-5.3.2-0-g027ebff56b83600d88fd303b98c36201116a7560"
+        }
+      ]
+    },
+    {
+      "name": "components/gawk.bst",
+      "x-cpe": {
+        "product": "gawk"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/flatpak-xdg-utils.bst",
+      "x-cpe": {
+        "product": "flatpak-xdg-utils",
+        "version": "1.0.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
+          "commit": "1.0.6-0-g05abdd7421688be5835a6b12f2b068086c38d4aa"
+        }
+      ]
+    },
+    {
+      "name": "components/fmtlib.bst",
+      "x-cpe": {
+        "product": "fmtlib",
+        "version": "11.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/fmtlib/fmt.git",
+          "commit": "11.2.0-0-g40626af88bd7df9a5fb80be7b25ac85b122d6c21"
+        }
+      ]
+    },
+    {
+      "name": "components/avahi-libs.bst",
+      "x-cpe": {
+        "product": "avahi-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/cups-base.bst",
+      "x-cpe": {
+        "product": "cups",
+        "version": "2.4.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/OpenPrinting/cups.git",
+          "commit": "v2.4.12-0-g0b0425d34739c30ea1979472b023501bc8357fa8"
+        },
+        {
+          "type": "dir",
+          "path": "files/cups/tmpfiles.conf"
+        },
+        {
+          "type": "dir",
+          "path": "files/cups/sysusers.conf"
+        }
+      ]
+    },
+    {
+      "name": "components/cups.bst",
+      "x-cpe": {
+        "product": "cups"
+      },
+      "sources": []
+    },
+    {
+      "name": "bootstrap/libxcrypt.bst",
+      "x-cpe": {
+        "product": "libxcrypt",
+        "version": "4.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/besser82/libxcrypt.git",
+          "commit": "v4.5.2-0-gdb70b42bd7b2a5b00a8580c8dec0aa66791c950a"
+        }
+      ]
+    },
+    {
+      "name": "components/cyrus-sasl.bst",
+      "x-cpe": {
+        "patches": [
+          "CVE-2019-19906"
+        ],
+        "product": "cyrus-sasl",
+        "version": "2.1.28"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/cyrusimap/cyrus-sasl.git",
+          "commit": "cyrus-sasl-2.1.28-0-g7a6b45b177070198fed0682bea5fa87c18abb084"
+        },
+        {
+          "type": "patch",
+          "path": "patches/cyrus-sasl/c99.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-pciaccess.bst",
+      "x-cpe": {
+        "product": "xorg-lib-pciaccess",
+        "version": "0.18.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git",
+          "commit": "libpciaccess-0.18.1-0-g2ec2576cabefef1eaa5dd9307c97de2e887fc347"
+        }
+      ]
+    },
+    {
+      "name": "components/libdrm.bst",
+      "x-cpe": {
+        "product": "libdrm",
+        "version": "2.4.131"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/mesa/drm.git",
+          "commit": "libdrm-2.4.131-0-g6bfcfc725fbe0ece0918535556d61ee567b1ffff"
+        }
+      ]
+    },
+    {
+      "name": "components/dummy-gbm.bst",
+      "x-cpe": {
+        "product": "mesa",
+        "vendor": "mesa3d",
+        "version": "25.3.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/mesa/mesa.git",
+          "commit": "mesa-25.3.3-0-ga9c6420d8c39ce10bcc60a9c32308b7b9b7d34d9"
+        }
+      ]
+    },
+    {
+      "name": "components/e2fsprogs.bst",
+      "x-cpe": {
+        "product": "e2fsprogs",
+        "version": "1.47.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git",
+          "commit": "v1.47.3-0-gda631e117dcf8797bfda0f48bdaa05ac0fbcf7af"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xkbfile.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xkbfile",
+        "version": "1.1.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxkbfile.git",
+          "commit": "libxkbfile-1.1.3-0-g39a5f8e67615f443e76146769d5f5f9abc5ebd2f"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-app-xkbcomp.bst",
+      "x-cpe": {
+        "product": "xorg-app-xkbcomp",
+        "version": "1.5.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/app/xkbcomp.git",
+          "commit": "xkbcomp-1.5.0-0-g2c7789785981ad1fce3858c726615b49293f7de0"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-data-xkeyboard-config.bst",
+      "x-cpe": {
+        "product": "xorg-data-xkeyboard-config",
+        "version": "2.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git",
+          "commit": "xkeyboard-config-2.46-0-g4225e14a2d0fca5a4f9cb8517cf12d96ea290d84"
+        }
+      ]
+    },
+    {
+      "name": "components/libxkbcommon.bst",
+      "x-cpe": {
+        "product": "libxkbcommon",
+        "version": "1.11.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/xkbcommon/libxkbcommon.git",
+          "commit": "xkbcommon-1.11.0-0-g0f9cefb1fedb23433666fa5d9045e48ff030c006"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xfixes.bst",
+      "x-cpe": {
+        "product": "libxfixes",
+        "version": "6.0.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxfixes.git",
+          "commit": "libXfixes-6.0.2-0-g70d5b0e37f8a759f3dbc218f22954347ceed094a"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xcomposite.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xcomposite",
+        "version": "0.4.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcomposite.git",
+          "commit": "libXcomposite-0.4.6-0-gcecff847395deb553b6331f31776f9cbfc809add"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xcursor.bst",
+      "x-cpe": {
+        "product": "libxcursor",
+        "version": "1.2.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcursor.git",
+          "commit": "libXcursor-1.2.3-0-g8ae6cf61b18ecddf26f72a07bbfbd1ea9f022c36"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xdamage.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xdamage",
+        "version": "1.1.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxdamage.git",
+          "commit": "libXdamage-1.1.6-0-g1f20df4fd7c132f55e924dc5ec3f270cd54704d0"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xi.bst",
+      "x-cpe": {
+        "product": "libxi",
+        "version": "1.8.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxi.git",
+          "commit": "libXi-1.8.2-0-g3c2d5aedd7708c75710b39268631762de904c304"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xinerama.bst",
+      "x-cpe": {
+        "product": "libxinerama",
+        "version": "1.1.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxinerama.git",
+          "commit": "libXinerama-1.1.5-0-g71dfee64feb84f907016940263b235a61c9e8960"
+        }
+      ]
+    },
+    {
+      "name": "components/gtk3.bst",
+      "x-cpe": {
+        "product": "gtk+",
+        "version": "3.24.51"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gtk.git",
+          "commit": "3.24.51-0-g0d3e55cf22abc81b532a3011462b3195f1480974"
+        }
+      ]
+    },
+    {
+      "name": "components/fcitx5-gtk.bst",
+      "x-cpe": {
+        "product": "fcitx5-gtk",
+        "version": "5.1.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/fcitx/fcitx5-gtk.git",
+          "commit": "5.1.5-0-g049e622f774f5bc34cef8b1e5151b9cc4b9601f6"
+        }
+      ]
+    },
+    {
+      "name": "components/fdsdk-lic-dedup.bst",
+      "x-cpe": {
+        "product": "fdsdk-lic-dedup"
+      },
+      "sources": [
+        {
+          "type": "dir",
+          "path": "files/fdsdk-lic-dedup/fdsdk-lic-dedup.py"
+        }
+      ]
+    },
+    {
+      "name": "components/frei0r.bst",
+      "x-cpe": {
+        "product": "frei0r",
+        "version": "2.5.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/dyne/frei0r.git",
+          "commit": "v2.5.1-0-gf081aa64d4fb99fb1f16dce7dff8d6a989794afa"
+        }
+      ]
+    },
+    {
+      "name": "components/gcab.bst",
+      "x-cpe": {
+        "product": "gcab",
+        "version": "1.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/gcab.git",
+          "commit": "v1.6-0-gb1a8a5867ccf0209d3e409b12986165c8f7a6fa4"
+        }
+      ]
+    },
+    {
+      "name": "components/glibc-gconv-cache.bst",
+      "x-cpe": {
+        "product": "glibc-gconv-cache"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libassuan.bst",
+      "x-cpe": {
+        "product": "libassuan",
+        "version": "3.0.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libassuan.git",
+          "commit": "libassuan-3.0.2-0-g0f84595a4bc706d3afb969d59618244c7db3b59f"
+        }
+      ]
+    },
+    {
+      "name": "components/bzip2.bst",
+      "x-cpe": {
+        "product": "bzip2"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libksba.bst",
+      "x-cpe": {
+        "product": "libksba",
+        "version": "1.6.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libksba.git",
+          "commit": "libksba-1.6.7-0-gb14e68b97df754b2bb7a90bb904d143d8e896afb"
+        }
+      ]
+    },
+    {
+      "name": "components/gnupg.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2022-34903"
+        ],
+        "product": "gnupg",
+        "version": "2.4.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/gnupg.git",
+          "commit": "gnupg-2.4.9-0-g21c7d29d6ed2eb891f7f66f83bcf764fcaaa6752"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gnupg/remove-Werror-from-configure.ac.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gnupg/0001-session-env-Skip-DBUS_SESSION_BUS_ADDRESS-inside-Fla.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gpgme.bst",
+      "x-cpe": {
+        "product": "gpgme",
+        "version": "2.0.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/gpgme.git",
+          "commit": "gpgme-2.0.0-0-ge17ba578861905857da0a514b4fc9b88a57f7346"
+        }
+      ]
+    },
+    {
+      "name": "components/gpgmepp.bst",
+      "x-cpe": {
+        "product": "gpgmepp",
+        "version": "2.0.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/gpgmepp.git",
+          "commit": "gpgmepp-2.0.0-0-g301d39f8b97a79369292280e201e45f472d71e91"
+        }
+      ]
+    },
+    {
+      "name": "components/iana-config.bst",
+      "x-cpe": {
+        "product": "iana-config",
+        "version": "2019.07.16"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/freedesktop-sdk/mirrors/iana-config.git",
+          "commit": "2019-07-16-0-g64c890c79086d9797c5fb76f9edf5a5bfe906bbb"
+        },
+        {
+          "type": "dir",
+          "path": "files/iana-config"
+        }
+      ]
+    },
+    {
+      "name": "components/iso-codes.bst",
+      "x-cpe": {
+        "product": "iso-codes",
+        "version": "4.20.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://salsa.debian.org/iso-codes-team/iso-codes.git",
+          "commit": "v4.20.1-0-g74623235ae99f6e835e1e465017ce4c544ae6b53"
+        }
+      ]
+    },
+    {
+      "name": "components/jq.bst",
+      "x-cpe": {
+        "product": "jq",
+        "version": "1.8.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/jqlang/jq.git",
+          "commit": "jq-1.8.1-0-g4467af7068b1bcd7f882defff6e7ea674c5357f4"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/kkos/oniguruma.git",
+          "commit": "4ef89209a239c1aea328cf13c05a2807e5c146d1"
+        }
+      ]
+    },
+    {
+      "name": "components/ladspa-sdk.bst",
+      "x-cpe": {
+        "product": "ladspa-sdk",
+        "version": "1.17"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.ladspa.org/download/ladspa_sdk_1.17.tgz",
+          "sha256": "27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b"
+        }
+      ]
+    },
+    {
+      "name": "components/lcms.bst",
+      "x-cpe": {
+        "product": "little_cms_color_engine",
+        "ignored": [
+          "CVE-2016-10165"
+        ],
+        "version": "2.18"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/mm2/Little-CMS.git",
+          "commit": "lcms2.18-0-g35b57af4e1a4d6d7a40ba188f9f4efb7857ff511"
+        }
+      ]
+    },
+    {
+      "name": "components/less.bst",
+      "x-cpe": {
+        "vendor": "gnu",
+        "product": "less",
+        "version": "685"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gwsw/less.git",
+          "commit": "v685-rel-0-gbcfda5f4ff0a1cc58aeb9eadcf2b6f1659523d45"
+        }
+      ]
+    },
+    {
+      "name": "components/aom.bst",
+      "x-cpe": {
+        "product": "aom",
+        "version": "3.13.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://aomedia.googlesource.com/aom.git",
+          "commit": "v3.13.1-0-gd772e334cc724105040382a977ebb10dfd393293"
+        }
+      ]
+    },
+    {
+      "name": "components/libavif.bst",
+      "x-cpe": {
+        "product": "libavif",
+        "version": "1.3.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/AOMediaCodec/libavif.git",
+          "commit": "v1.3.0-0-g1aadfad932c98c069a1204261b1856f81f3bc199"
+        }
+      ]
+    },
+    {
+      "name": "components/libexif.bst",
+      "x-cpe": {
+        "vendor": "curtis_galloway",
+        "product": "libexif",
+        "version": "0.6.25"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libexif/libexif.git",
+          "commit": "libexif-0_6_25-release-0-ge99f14785ef02ee249bccbad8a97595eadbab810"
+        }
+      ]
+    },
+    {
+      "name": "components/libsoup.bst",
+      "x-cpe": {
+        "product": "libsoup",
+        "version": "3.6.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libsoup.git",
+          "commit": "3.6.5-0-g766e17528251c9b696a6076300ac61adc95536ac"
+        }
+      ]
+    },
+    {
+      "name": "components/geoclue-base.bst",
+      "x-cpe": {
+        "product": "geoclue",
+        "version": "2.8.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/geoclue/geoclue.git",
+          "commit": "2.8.0-0-gf59a42a9fbbcfcb341708e5efd6edfe72a9da768"
+        },
+        {
+          "type": "dir",
+          "path": "files/geoclue/sysusers.conf"
+        }
+      ]
+    },
+    {
+      "name": "components/geoclue-libs.bst",
+      "x-cpe": {
+        "product": "geoclue-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "bootstrap/symlinks.bst",
+      "x-cpe": {
+        "product": "symlinks"
+      },
+      "sources": [
+        {
+          "type": "dir",
+          "path": "elements/bootstrap/symlinks"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/linux-headers.bst",
+      "x-cpe": {
+        "product": "linux-headers",
+        "version": "6.12.40"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git",
+          "commit": "v6.12.40-0-gd90ecb2b1308b3e362ec4c21ff7cf0a051b445df"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/glibc.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2010-4756",
+          "CVE-2021-3998",
+          "CVE-2022-39046"
+        ],
+        "product": "glibc",
+        "version": "2.42"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://sourceware.org/git/glibc.git",
+          "commit": "glibc-2.42-48-gf122d0b4d145814869bf10c56db1d971bcba55c5"
+        },
+        {
+          "type": "patch",
+          "path": "patches/glibc/fix-dl-dst-lib.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/ncurses.bst",
+      "x-cpe": {
+        "product": "ncurses",
+        "version": "6.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ThomasDickey/ncurses-snapshots.git",
+          "commit": "v6_5-0-ge12a453fc23c5ac586d72af46465e8ba92adb707"
+        },
+        {
+          "type": "patch",
+          "path": "patches/ncurses/always-cross-compile.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/readline.bst",
+      "x-cpe": {
+        "product": "readline",
+        "version": "8.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/readline.git",
+          "commit": "readline-8.3-3-g553d6bb272f26400d6d4d1cac7c1df84c447449b"
+        },
+        {
+          "type": "patch",
+          "path": "patches/readline/readline-disable-rpath.patch"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/bash.bst",
+      "x-cpe": {
+        "vendor": "gnu",
+        "patches": [
+          "CVE-2019-18276"
+        ],
+        "product": "bash",
+        "version": "5.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/bash.git",
+          "commit": "bash-5.3-10-g637f5c8696a6adc9b4519f1cd74aa78492266b7f"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/attr.bst",
+      "x-cpe": {
+        "product": "attr",
+        "version": "2.5.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/attr.git",
+          "commit": "v2.5.2-0-gee80fdbc11c351fe96bc54a20c2893dde7df8845"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/acl.bst",
+      "x-cpe": {
+        "product": "acl",
+        "version": "2.3.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/acl.git",
+          "commit": "v2.3.2-0-g214c7d146945c31a9dc04cb7094b85053f52a21e"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/pcre2.bst",
+      "x-cpe": {
+        "product": "pcre2",
+        "version": "10.46"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/PCRE2Project/pcre2.git",
+          "commit": "pcre2-10.46-0-gb2bd4254b379b9d7dc9a3dda060a7e27009ccdff"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zherczeg/sljit.git",
+          "commit": "e51eabbfb8eabc6526f56e4e88b29fb10d1ee048"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libsepol.bst",
+      "x-cpe": {
+        "product": "libsepol",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libsepol-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/libselinux.bst",
+      "x-cpe": {
+        "product": "libselinux",
+        "version": "3.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/SELinuxProject/selinux.git",
+          "commit": "libselinux-3.9-0-g919e9e64cc4b20f5a1e4df1e38cce1bfe15aff09"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/coreutils.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2016-2781"
+        ],
+        "product": "coreutils",
+        "version": "9.7"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-9.7.tar.xz",
+          "sha256": "e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf"
+        },
+        {
+          "type": "patch",
+          "path": "patches/coreutils/coreutils-no-man-deps.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/utf-locale.bst",
+      "x-cpe": {
+        "product": "utf-locale"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/gcc-base.bst",
+      "x-cpe": {
+        "product": "gcc-base",
+        "version": "15.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gcc.gnu.org/git/gcc.git",
+          "commit": "releases/gcc-15.2.0-0-g5115c7e447fc07457443df874bf57840e8316d5f"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+          "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz",
+          "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01"
+        },
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz",
+          "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8"
+        },
+        {
+          "type": "archive",
+          "url": "https://libisl.sourceforge.io/isl-0.27.tar.xz",
+          "sha256": "6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/build-fix-CXXFLAGS_FOR_BUILD-passing.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-enable-riscv.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-no-cross-structure.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gcc/gcc-multiarch-os-dir.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gcc-libs.bst",
+      "x-cpe": {
+        "product": "gcc-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "public-stacks/runtime-minimal.bst",
+      "x-cpe": {
+        "product": "runtime-minimal"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/apparmor-base.bst",
+      "x-cpe": {
+        "product": "apparmor",
+        "ignored": [
+          "CVE-2016-1585"
+        ],
+        "version": "4.1.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/apparmor/apparmor.git",
+          "commit": "v4.1.3-0-ga52bb9f0f3bd46db911411a2e29b986303954ab1"
+        }
+      ]
+    },
+    {
+      "name": "components/libapparmor.bst",
+      "x-cpe": {
+        "product": "libapparmor"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/expat.bst",
+      "x-cpe": {
+        "product": "expat",
+        "version": "2.7.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libexpat/libexpat.git",
+          "commit": "R_2_7_1-0-gf9a3eeb3e09fbea04b1c451ffc422ab2f1e45744"
+        }
+      ]
+    },
+    {
+      "name": "components/libcap.bst",
+      "x-cpe": {
+        "product": "libcap",
+        "version": "2.77"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/libs/libcap/libcap.git",
+          "commit": "libcap-2.77-0-g3b2513a1ba696f01d31edfa93f35c30b379cc70e"
+        },
+        {
+          "type": "patch",
+          "path": "patches/libcap/libcap-disable-tests.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libgpg-error.bst",
+      "x-cpe": {
+        "product": "libgpg-error",
+        "version": "1.56"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libgpg-error.git",
+          "commit": "libgpg-error-1.56-0-gb3b68bde07b02dd2b6d78356ac90baa652a309fa"
+        }
+      ]
+    },
+    {
+      "name": "components/libgcrypt.bst",
+      "x-cpe": {
+        "product": "libgcrypt",
+        "version": "1.11.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/gpg/libgcrypt.git",
+          "commit": "libgcrypt-1.11.2-0-g737cc63600146f196738a6768679eb016cf866e9"
+        }
+      ]
+    },
+    {
+      "name": "components/lz4.bst",
+      "x-cpe": {
+        "vendor": "lz4_project",
+        "product": "lz4",
+        "version": "1.10.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/lz4/lz4.git",
+          "commit": "v1.10.0-0-gebb370ca83af193212df4dcbadcc5d87bc0de2f0"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/zstd.bst",
+      "x-cpe": {
+        "product": "zstd",
+        "version": "1.5.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/facebook/zstd.git",
+          "commit": "v1.5.7-0-gf8745da6ff1ad1e7bab384bd1f9d742439278e99"
+        }
+      ]
+    },
+    {
+      "name": "components/zstd.bst",
+      "x-cpe": {
+        "product": "zstd"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/systemd-base.bst",
+      "x-cpe": {
+        "vendor": "freedesktop",
+        "product": "systemd",
+        "version": "257"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/systemd/systemd.git",
+          "commit": "v257.10-0-g32ba9cee3c9cef33b7081768e8ff58b410a523da"
+        },
+        {
+          "type": "dir",
+          "path": "files/systemd/90-sysupdate.preset"
+        }
+      ]
+    },
+    {
+      "name": "components/systemd-libs.bst",
+      "x-cpe": {
+        "product": "systemd-libs"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dbus-base.bst",
+      "x-cpe": {
+        "product": "d-bus",
+        "version": "1.16.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/dbus/dbus.git",
+          "commit": "dbus-1.16.2-0-g958bf9db2100553bcd2fe2a854e1ebb42e886054"
+        }
+      ]
+    },
+    {
+      "name": "components/libdbus.bst",
+      "x-cpe": {
+        "product": "libdbus"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dbus-tools.bst",
+      "x-cpe": {
+        "product": "dbus-tools"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/dbus.bst",
+      "x-cpe": {
+        "product": "dbus"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/inih.bst",
+      "x-cpe": {
+        "product": "inih",
+        "version": "62"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/benhoyt/inih.git",
+          "commit": "r62-0-g26254ee9de7681f8825433415443e7116ff24b98"
+        }
+      ]
+    },
+    {
+      "name": "components/gamemode-base.bst",
+      "x-cpe": {
+        "product": "gamemode",
+        "version": "1.8.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/FeralInteractive/gamemode.git",
+          "commit": "1.8.2-0-gc54d6d4243b0dd0afcb49f2c9836d432da171a2b"
+        }
+      ]
+    },
+    {
+      "name": "components/libgamemode.bst",
+      "x-cpe": {
+        "product": "libgamemode"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/openjpeg.bst",
+      "x-cpe": {
+        "ignored": [
+          "CVE-2016-7163",
+          "CVE-2016-9675"
+        ],
+        "product": "openjpeg",
+        "version": "2.5.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/uclouvain/openjpeg.git",
+          "commit": "v2.5.4-0-g6c4a29b00211eb0430fa0e5e890f1ce5c80f409f"
+        }
+      ]
+    },
+    {
+      "name": "components/libheif.bst",
+      "x-cpe": {
+        "product": "libheif",
+        "version": "1.20.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/strukturag/libheif.git",
+          "commit": "v1.20.2-0-g35dad50a9145332a7bfdf1ff6aef6801fb613d68"
+        }
+      ]
+    },
+    {
+      "name": "components/highway.bst",
+      "x-cpe": {
+        "product": "highway",
+        "version": "1.3.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/google/highway.git",
+          "commit": "1.3.0-0-gac0d5d297b13ab1b89f48484fc7911082d76a93f"
+        }
+      ]
+    },
+    {
+      "name": "components/libjxl.bst",
+      "x-cpe": {
+        "product": "libjxl",
+        "version": "0.11.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libjxl/libjxl.git",
+          "commit": "v0.11.1-0-g794a5dcf0d54f9f0b20d288a12e87afb91d20dfc"
+        }
+      ]
+    },
+    {
+      "name": "components/libnice.bst",
+      "x-cpe": {
+        "product": "libnice",
+        "version": "0.1.23"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/libnice/libnice.git",
+          "commit": "0.1.23-0-g0a3890f1830d4c77ecbb41de835aa549e7645ed5"
+        }
+      ]
+    },
+    {
+      "name": "components/libpipeline.bst",
+      "x-cpe": {
+        "product": "libpipeline",
+        "version": "1.5.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/libpipeline/libpipeline.git",
+          "commit": "1.5.8-0-gdd37cf76496b4b999509bd133657c1fc021e3a5f"
+        },
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/gnulib.git",
+          "commit": "v1.0-487-g0ba13435a9362bec0ff5fd0830907b9fac723e41"
+        }
+      ]
+    },
+    {
+      "name": "components/libtraceevent.bst",
+      "x-cpe": {
+        "product": "libtraceevent",
+        "version": "1.8.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git",
+          "commit": "libtraceevent-1.8.7-0-g7a8fee57d87aa61c9d578cd67e99d2677b894772"
+        }
+      ]
+    },
+    {
+      "name": "components/nss.bst",
+      "x-cpe": {
+        "product": "network_security_services",
+        "ignored": [
+          "CVE-2013-0791",
+          "CVE-2013-1620"
+        ],
+        "version": "3.101"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/nss-dev/nss.git",
+          "commit": "NSS_3_101_4_RTM-0-g8fbafb27fa3b2408faeeb2a36932111503d460aa"
+        },
+        {
+          "type": "patch",
+          "path": "patches/nss/pkg-config-libdir.patch"
+        },
+        {
+          "type": "dir",
+          "path": "files/nss/load-p11-kit-trust.c"
+        }
+      ]
+    },
+    {
+      "name": "components/orc.bst",
+      "x-cpe": {
+        "product": "orc",
+        "version": "0.4.41"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/orc.git",
+          "commit": "0.4.41-0-g96dfe82ae431d8e4e06b6092171e231d693a73b5"
+        }
+      ]
+    },
+    {
+      "name": "components/graphene.bst",
+      "x-cpe": {
+        "product": "graphene",
+        "version": "1.10.8"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ebassi/graphene.git",
+          "commit": "1.10.8-0-g4e2578450809c2099400cf85caf18eafcd7100aa"
+        }
+      ]
+    },
+    {
+      "name": "components/libtheora.bst",
+      "x-cpe": {
+        "product": "libtheora",
+        "version": "1.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/theora.git",
+          "commit": "v1.2.0-0-g8e4808736e9c181b971306cc3f05df9e61354004"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xv.bst",
+      "x-cpe": {
+        "product": "libxv",
+        "version": "1.0.13"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxv.git",
+          "commit": "libXv-1.0.13-0-ge1cde54538060c4fd3a3d02e3d2e2b7e5da7bff9"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer-plugins-base.bst",
+      "x-cpe": {
+        "product": "gstreamer",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/openal.bst",
+      "x-cpe": {
+        "product": "openal",
+        "version": "1.24.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/kcat/openal-soft.git",
+          "commit": "1.24.3-0-gdc7d7054a5b4f3bec1dc23a42fd616a0847af948"
+        }
+      ]
+    },
+    {
+      "name": "components/procps.bst",
+      "x-cpe": {
+        "product": "procps",
+        "version": "4.0.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/procps-ng/procps.git",
+          "commit": "v4.0.5-0-gf46b2f7929cdfe2913ed0a7f585b09d6adbf994e"
+        }
+      ]
+    },
+    {
+      "name": "components/speexdsp.bst",
+      "x-cpe": {
+        "product": "speexdsp",
+        "version": "1.2.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/speexdsp.git",
+          "commit": "SpeexDSP-1.2.1-0-g1b28a0f61bc31162979e1f26f3981fc3637095c8"
+        }
+      ]
+    },
+    {
+      "name": "components/speex.bst",
+      "x-cpe": {
+        "product": "speex",
+        "version": "1.2.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/speex.git",
+          "commit": "Speex-1.2.1-0-g5dceaaf3e23ee7fd17c80cb5f02a838fd6c18e01"
+        }
+      ]
+    },
+    {
+      "name": "components/tzdata.bst",
+      "x-cpe": {
+        "product": "tzdata",
+        "version": "2025c"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/eggert/tz.git",
+          "commit": "2025c-0-gb81d0be187f04ca856fc5a68a7ec2b8e460bafef"
+        }
+      ]
+    },
+    {
+      "name": "components/abseil-cpp.bst",
+      "x-cpe": {
+        "product": "abseil-cpp",
+        "version": "20250512.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/abseil/abseil-cpp.git",
+          "commit": "20250512.1-0-g76bb24329e8bf5f39704eb10d21b9a80befa7c81"
+        }
+      ]
+    },
+    {
+      "name": "components/webrtc-audio-processing.bst",
+      "x-cpe": {
+        "product": "webrtc-audio-processing",
+        "version": "2.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git",
+          "commit": "v2.1-0-g846fe90a289f58b7c9303a635142aa2c7caa93e5"
+        },
+        {
+          "type": "patch",
+          "path": "patches/webrtc-audio-processing/gcc15.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/pipewire-base.bst",
+      "x-cpe": {
+        "product": "pipewire",
+        "version": "1.4.9"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/PipeWire/pipewire.git",
+          "commit": "1.4.9-0-gfd60e04525f3a04d90bf50085222e0cc9139b4a4"
+        }
+      ]
+    },
+    {
+      "name": "components/pipewire.bst",
+      "x-cpe": {
+        "product": "pipewire"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/libdecor.bst",
+      "x-cpe": {
+        "product": "libdecor",
+        "version": "0.2.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/libdecor/libdecor.git",
+          "commit": "0.2.5-0-g149c6f0b05663aaa69fdf7f94be2483776d1a311"
+        }
+      ]
+    },
+    {
+      "name": "components/libsamplerate.bst",
+      "x-cpe": {
+        "product": "libsamplerate",
+        "version": "0.2.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsndfile/libsamplerate.git",
+          "commit": "0.2.2-0-gc96f5e3de9c4488f4e6c97f59f5245f22fda22f7"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl3.bst",
+      "x-cpe": {
+        "product": "sdl3",
+        "version": "3.2.28"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/SDL.git",
+          "commit": "release-3.2.28-0-g7f3ae3d57459e59943a4ecfefc8f6277ec6bf540"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl2-compat.bst",
+      "x-cpe": {
+        "product": "sdl2-compat",
+        "version": "2.32.62"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/sdl2-compat.git",
+          "commit": "release-2.32.62-0-g0846ba29413339352e2384b9a56ea04130039a18"
+        }
+      ]
+    },
+    {
+      "name": "components/lame.bst",
+      "x-cpe": {
+        "product": "lame",
+        "version": "3.100"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz",
+          "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+        },
+        {
+          "type": "patch",
+          "path": "patches/lame/lame-3.100.5-pkgconfig-to-get-correct-libs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libmysofa.bst",
+      "x-cpe": {
+        "product": "libmysofa",
+        "version": "1.3.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/hoene/libmysofa.git",
+          "commit": "v1.3.3-0-g444d2c1d7ececf5cc2d96d3b17b209047b02318d"
+        }
+      ]
+    },
+    {
+      "name": "components/libva.bst",
+      "x-cpe": {
+        "product": "libva",
+        "version": "2.22.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/intel/libva.git",
+          "commit": "2.22.0-0-g217da1c28336d6a7e9c0c4cb8f1c303968a675f1"
+        }
+      ]
+    },
+    {
+      "name": "components/libvdpau.bst",
+      "x-cpe": {
+        "product": "libvdpau",
+        "version": "1.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/vdpau/libvdpau.git",
+          "commit": "1.5-0-g79f1506a3307d3275b0fdfb2e110c173f68e6f78"
+        }
+      ]
+    },
+    {
+      "name": "components/mpg123.bst",
+      "x-cpe": {
+        "product": "mpg123",
+        "version": "1.33.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.mpg123.de/download/mpg123-1.33.0.tar.bz2",
+          "sha256": "2290e3aede6f4d163e1a17452165af33caad4b5f0948f99429cfa2d8385faa9d"
+        }
+      ]
+    },
+    {
+      "name": "components/libbpf.bst",
+      "x-cpe": {
+        "product": "libbpf",
+        "version": "1.6.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libbpf/libbpf.git",
+          "commit": "v1.6.1-0-gba4eca3f152d92adfea38d55d5f66a9850b93973"
+        }
+      ]
+    },
+    {
+      "name": "components/v4l-utils.bst",
+      "x-cpe": {
+        "product": "v4l-utils",
+        "version": "1.32.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.linuxtv.org/v4l-utils.git",
+          "commit": "v4l-utils-1.32.0-0-g5a666c7ce89c00d66aa8e53c8f098a0c6c401f91"
+        }
+      ]
+    },
+    {
+      "name": "components/vulkan-icd-loader.bst",
+      "x-cpe": {
+        "product": "vulkan-icd-loader",
+        "version": "1.4.321"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g2cd90f9d20df57eac214c148f3aed885372ddcfe"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Tools.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g06ae73a3dc3a03466817d8370355203dac7b79b1"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g2a611a970fdbc41ac2e3e328802aed9985352dca"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g33e02568181e3312f49a3cf33df470bf96ef293a"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-tools/Remove-libSPIRV-Tools-shared.so.patch"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/glslang.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-g8a85691a0740d390761a1008b4696f57facd02c4"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/KhronosGroup/Vulkan-Loader.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-gda8d2caad9341ca8c5a7c3deba217d7da50a7c24"
+        },
+        {
+          "type": "git",
+          "url": "https://github.com/zeux/volk.git",
+          "commit": "vulkan-sdk-1.4.321.0-0-ga8da8ef3368482b0ee9b0ec0c6079a16a89c6924"
+        },
+        {
+          "type": "patch",
+          "path": "patches/vulkan-tools/unbreak_wayland_1_24.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-headers/llvm21.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/spirv-tools/llvm21.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/ffmpeg.bst",
+      "x-cpe": {
+        "product": "ffmpeg",
+        "version": "7.1.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.ffmpeg.org/ffmpeg.git",
+          "commit": "n7.1.3-0-gf46e514491172d15bd74b4abb1814cd2f05a763e"
+        },
+        {
+          "type": "patch",
+          "path": "patches/ffmpeg/posix-ioctl-hack.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer-libav.bst",
+      "x-cpe": {
+        "product": "gstreamer-libav",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/libgudev.bst",
+      "x-cpe": {
+        "product": "libgudev",
+        "version": "238"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libgudev.git",
+          "commit": "238-0-gdf7c9c9940160307aaeb31347f4776a46f8736a9"
+        }
+      ]
+    },
+    {
+      "name": "components/liblc3.bst",
+      "x-cpe": {
+        "product": "liblc3",
+        "version": "1.1.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/google/liblc3.git",
+          "commit": "v1.1.3-0-g96a3af0beb5487aca3b98a4b992a539a1f6d80d1"
+        }
+      ]
+    },
+    {
+      "name": "components/libsrtp2.bst",
+      "x-cpe": {
+        "product": "libsrtp2",
+        "version": "2.7.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/cisco/libsrtp.git",
+          "commit": "v2.7.0-0-gee1a77c9f9dc02c42bda9901038c500c5efe4cfa"
+        }
+      ]
+    },
+    {
+      "name": "components/wildmidi.bst",
+      "x-cpe": {
+        "product": "wildmidi",
+        "version": "0.4.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Mindwerks/wildmidi.git",
+          "commit": "wildmidi-0.4.6-0-g345a6dd94e89dda34072f1d03eb75180c9bc994f"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer-plugins-bad.bst",
+      "x-cpe": {
+        "product": "gstreamer",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/taglib.bst",
+      "x-cpe": {
+        "product": "taglib",
+        "version": "2.1.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/taglib/taglib.git",
+          "commit": "v2.1.1-0-g7d86716194777e0294453bfdc9dd170bd033e1f4"
+        }
+      ]
+    },
+    {
+      "name": "components/wavpack.bst",
+      "x-cpe": {
+        "product": "wavpack",
+        "version": "5.8.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/dbry/WavPack.git",
+          "commit": "5.8.1-0-g4827b9889665b937b6ed71b9c6c0123152cd7a02"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer-plugins-good.bst",
+      "x-cpe": {
+        "product": "gstreamer",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/gstreamer-plugins-rs.bst",
+      "x-cpe": {
+        "product": "gstreamer-plugins-rs",
+        "version": "0.14.4"
+      }
+    },
+    {
+      "name": "components/gstreamer-plugins-ugly.bst",
+      "x-cpe": {
+        "product": "gstreamer",
+        "version": "1.26.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+          "commit": "1.26.10-0-gbfdc62185e243d3633aa916187a566d03a587792"
+        },
+        {
+          "type": "patch",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        },
+        {
+          "type": "dir",
+          "path": "patches/gstreamer/gst-libav-stop-caching-codecs.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/hunspell.bst",
+      "x-cpe": {
+        "product": "hunspell",
+        "version": "1.7.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/hunspell/hunspell.git",
+          "commit": "v1.7.2-0-g2969be996acad84b91ab3875b1816636fe61a40e"
+        }
+      ]
+    },
+    {
+      "name": "components/hyphen.bst",
+      "x-cpe": {
+        "product": "hyphen",
+        "version": "2.8.8"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/hunspell/hyphen-2.8.8.tar.gz",
+          "sha256": "304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705"
+        }
+      ]
+    },
+    {
+      "name": "components/liberation-fonts.bst",
+      "x-cpe": {
+        "product": "liberation-fonts",
+        "version": "2.1.5"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz",
+          "sha256": "7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0"
+        },
+        {
+          "type": "dir",
+          "path": "files/font-conf/liberation-fonts"
+        }
+      ]
+    },
+    {
+      "name": "components/libibus.bst",
+      "x-cpe": {
+        "product": "libibus",
+        "version": "1.5.32"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/ibus/ibus.git",
+          "commit": "1.5.32-0-g0fd4e408a52d3d15179c643fd54d310aafd8875f"
+        }
+      ]
+    },
+    {
+      "name": "components/libnotify.bst",
+      "x-cpe": {
+        "vendor": "gnome",
+        "product": "libnotify",
+        "version": "0.8.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libnotify.git",
+          "commit": "0.8.6-0-g131aad01ff5f563b4863becbb6ed84dac6e75d5a"
+        }
+      ]
+    },
+    {
+      "name": "components/libp11.bst",
+      "x-cpe": {
+        "product": "libp11",
+        "version": "0.4.16"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/OpenSC/libp11.git",
+          "commit": "libp11-0.4.16-0-gb9c2de288833e38a391ee3cb106f965a40153629"
+        }
+      ]
+    },
+    {
+      "name": "components/libusb.bst",
+      "x-cpe": {
+        "product": "libusb",
+        "version": "1.0.29"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libusb/libusb.git",
+          "commit": "v1.0.29-0-g15a7ebb4d426c5ce196684347d2b7cafad862626"
+        }
+      ]
+    },
+    {
+      "name": "components/mpfr.bst",
+      "x-cpe": {
+        "product": "mpfr",
+        "version": "4.2.2"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftpmirror.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.xz",
+          "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01"
+        }
+      ]
+    },
+    {
+      "name": "components/mythes.bst",
+      "x-cpe": {
+        "product": "mythes",
+        "version": "1.2.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/hunspell/mythes.git",
+          "commit": "v1.2.5-0-g289a66571116dcc68346864de7492a55752e26ec"
+        }
+      ]
+    },
+    {
+      "name": "components/opencl.bst",
+      "x-cpe": {
+        "product": "opencl",
+        "version": "2.3.4"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/OCL-dev/ocl-icd.git",
+          "commit": "v2.3.4-0-ge5b32d5395582d027c3d68d7dbdf92e961bdc9c8"
+        }
+      ]
+    },
+    {
+      "name": "components/grep.bst",
+      "x-cpe": {
+        "product": "grep"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/sed.bst",
+      "x-cpe": {
+        "product": "sed"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/openssh.bst",
+      "x-cpe": {
+        "vendor": "openbsd",
+        "ignored": [
+          "CVE-2007-2768",
+          "CVE-2023-51767",
+          "CVE-2025-26465",
+          "CVE-2025-26466"
+        ],
+        "product": "openssh",
+        "version": "10.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/openssh/openssh-portable.git",
+          "commit": "V_10_2_P1-0-gd01efaa1c9ed84fd9011201dbc3c7cb0a82bcee3"
+        }
+      ]
+    },
+    {
+      "name": "components/pciutils.bst",
+      "x-cpe": {
+        "product": "pciutils",
+        "version": "3.14.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git",
+          "commit": "v3.14.0-0-gc6030ae1576b6bf1de9b41f53a9ed76137181d99"
+        }
+      ]
+    },
+    {
+      "name": "components/opusfile.bst",
+      "x-cpe": {
+        "product": "opusfile",
+        "version": "0.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.xiph.org/xiph/opusfile.git",
+          "commit": "v0.12-0-ga55c164e9891a9326188b7d4d216ec9a88373739"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl2-mixer.bst",
+      "x-cpe": {
+        "product": "sdl2-mixer",
+        "version": "2.8.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/SDL_mixer.git",
+          "commit": "release-2.8.1-0-g171eb2d420d5643e4ee11514a06e04a41a463bbd"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl2-net.bst",
+      "x-cpe": {
+        "product": "sdl2-net",
+        "version": "2.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/SDL_net.git",
+          "commit": "release-2.2.0-0-g669e75b84632e2c6cc5c65974ec9e28052cb7a4e"
+        },
+        {
+          "type": "patch",
+          "path": "patches/sdl2-net/cmake-pkgconfig.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl3-ttf.bst",
+      "x-cpe": {
+        "product": "sdl3-ttf",
+        "version": "3.2.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/SDL_ttf.git",
+          "commit": "release-3.2.2-0-ga1ce3670aec736ecbf0936c43f2f0cc53aa61e5b"
+        }
+      ]
+    },
+    {
+      "name": "components/shaderc.bst",
+      "x-cpe": {
+        "product": "shaderc",
+        "version": "2025.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/google/shaderc.git",
+          "commit": "v2025.3-0-g8c2e602ce440b7739c95ff3d69cecb1adf6becda"
+        },
+        {
+          "type": "patch",
+          "path": "patches/shaderc/what-a-mess.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/slang.bst",
+      "x-cpe": {
+        "product": "slang",
+        "version": "2.3.3"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2",
+          "sha256": "f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18"
+        }
+      ]
+    },
+    {
+      "name": "components/tex-gyre-fonts.bst",
+      "x-cpe": {
+        "product": "tex-gyre-fonts"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://mirrors.ctan.org/fonts/tex-gyre.zip",
+          "sha256": "1773c470f9e388e087b68e3426e115af2cd236845a7e05ceb25b2a503409a7a3"
+        },
+        {
+          "type": "dir",
+          "path": "files/font-conf/tex-gyre"
+        }
+      ]
+    },
+    {
+      "name": "components/unzip.bst",
+      "x-cpe": {
+        "vendor": "info-zip",
+        "patches": [
+          "CVE-2014-9636",
+          "CVE-2014-9913",
+          "CVE-2015-7696",
+          "CVE-2015-7697",
+          "CVE-2016-9844",
+          "CVE-2018-18384",
+          "CVE-2019-13232"
+        ],
+        "ignored": [
+          "CVE-2008-0888"
+        ],
+        "product": "unzip",
+        "version": "6.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/infozip/unzip60.tar.gz",
+          "sha256": "036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2014-9636.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2014-9913.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2015-7696.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2015-7697.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2016-9844.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/CVE-2018-18384.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/0001-CVE-2019-13232-fix-bug-in-undefer-input.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/0002-CVE-2019-13232-zip-bomb-with-overlapped-entries.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/0003-CVE-2019-13232-Do-not-raise-a-zip-bomb-alert-for-a-misplaced-centra.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/unzip-6.0-bzip2-configure.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/unzip-6.0-configure.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/unzip/unzip-gnu89-build.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/alsa-plugins.bst",
+      "x-cpe": {
+        "product": "alsa-plugins",
+        "version": "1.2.12"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/alsa-project/alsa-plugins.git",
+          "commit": "v1.2.12-0-g52574cb5ccbb8b546df2759e4b341a20332269b6"
+        }
+      ]
+    },
+    {
+      "name": "components/libsecret.bst",
+      "x-cpe": {
+        "product": "libsecret",
+        "version": "0.21.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libsecret.git",
+          "commit": "0.21.7-0-g0936f740c02b60f02657729cd99f581db4517a41"
+        }
+      ]
+    },
+    {
+      "name": "components/webp-pixbuf-loader.bst",
+      "x-cpe": {
+        "product": "webp-pixbuf-loader",
+        "version": "0.2.7"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/aruiz/webp-pixbuf-loader.git",
+          "commit": "0.2.7-0-g52232e4ba282b2fed68e8fcb4b5d45ed0eaa4ed3"
+        }
+      ]
+    },
+    {
+      "name": "components/wget2.bst",
+      "x-cpe": {
+        "product": "wget2",
+        "version": "2.2.0"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.com/gnuwget/wget2.git",
+          "commit": "v2.2.0-0-gf2071aaaf6f947fd03d243c6b619302d31d497f1"
+        },
+        {
+          "type": "git",
+          "url": "https://git.savannah.gnu.org/git/gnulib.git",
+          "commit": "c7f29c827df9284ec56233c515286c4d57361e4c"
+        },
+        {
+          "type": "patch",
+          "path": "patches/wget2/fix-gettext-ver.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util.bst",
+      "x-cpe": {
+        "product": "xcb-util",
+        "version": "0.4.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git",
+          "commit": "xcb-util-0.4.1-gitlab-0-gbffd8df1725c0fae9105a097e75b466e2f49d7bd"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util-image.bst",
+      "x-cpe": {
+        "product": "xcb-util-image",
+        "version": "0.4.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-image.git",
+          "commit": "xcb-util-image-0.4.1-gitlab-0-g1abfc17b1e08e46dbdf34b4ef36097a8c307a8ec"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util-renderutil.bst",
+      "x-cpe": {
+        "product": "xcb-util-renderutil",
+        "version": "0.3.10"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util.git",
+          "commit": "xcb-util-renderutil-0.3.10-0-g5293d8b6165f23b9f7a8bcc903da0e4d7a75984c"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util-cursor.bst",
+      "x-cpe": {
+        "product": "xcb-util-cursor",
+        "version": "0.1.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor.git",
+          "commit": "xcb-util-cursor-0.1.6-0-g7b0fa99aa13084a9bf7be4180066f6a74b0adef1"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util-keysyms.bst",
+      "x-cpe": {
+        "product": "xcb-util-keysyms",
+        "version": "0.4.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms.git",
+          "commit": "xcb-util-keysyms-0.4.1-0-g85e093f14b0ade2956e0a5d1c37cfde06d8b1ba6"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xcb-util-wm.bst",
+      "x-cpe": {
+        "product": "xcb-util-wm",
+        "version": "0.4.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git",
+          "commit": "xcb-util-wm-0.4.2-0-g0c6681e465c9cc7b1fbb60778ba1eaa61ab01a14"
+        },
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4.git",
+          "commit": "c617eee22ae5c285e79e81ec39ce96862fd3262f"
+        }
+      ]
+    },
+    {
+      "name": "components/xdg-user-dirs.bst",
+      "x-cpe": {
+        "product": "xdg-user-dirs",
+        "version": "0.19"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xdg/xdg-user-dirs.git",
+          "commit": "v0.19-0-g0577968675b9d7d660b3715cf6b2e00c6d491d67"
+        },
+        {
+          "type": "patch",
+          "path": "patches/xdg-user-dirs/gettext.patch"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-ice.bst",
+      "x-cpe": {
+        "product": "xorg-lib-ice",
+        "version": "1.1.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libice.git",
+          "commit": "libICE-1.1.2-0-gadf389fc19aedbf1be077b05365d164cd6f463d8"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-sm.bst",
+      "x-cpe": {
+        "product": "xorg-lib-sm",
+        "version": "1.2.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libsm.git",
+          "commit": "libSM-1.2.6-0-g5f6da959a34bcefc425b6e37462553acf44369a3"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xdmcp.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xdmcp",
+        "version": "1.1.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git",
+          "commit": "libXdmcp-1.1.5-0-g1192d3bc407348ff316bd3bffc791b3ac73f591b"
+        }
+      ]
+    },
+    {
+      "name": "components/sdl3-image.bst",
+      "x-cpe": {
+        "product": "sdl3-image",
+        "version": "3.2.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libsdl-org/SDL_image.git",
+          "commit": "release-3.2.6-0-gd78dd65454f442bfdbc373201165f1ef579484ab"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xpm.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xpm",
+        "version": "3.5.17"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxpm.git",
+          "commit": "libXpm-3.5.17-0-ga154f12b6e56f131bd5880fc96f11615ff940b29"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xscrnsaver.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xscrnsaver",
+        "version": "1.2.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git",
+          "commit": "libXScrnSaver-1.2.5-0-g60c957ba8a727d01b376da0142aef7e18aa86fe1"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xshmfence.bst",
+      "x-cpe": {
+        "product": "xorg-lib-xshmfence",
+        "version": "1.3.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxshmfence.git",
+          "commit": "libxshmfence-1.3.3-0-g89f064748554e11832a3ec783945e1f4c7fe846e"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xt.bst",
+      "x-cpe": {
+        "product": "libxt",
+        "version": "1.3.1"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxt.git",
+          "commit": "libXt-1.3.1-0-g1dfcfa8dcc3958749849438a802d66728ccf3115"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xtst.bst",
+      "x-cpe": {
+        "product": "libxtst",
+        "version": "1.2.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxtst.git",
+          "commit": "libXtst-1.2.5-0-gabf3ff74b97c4231d2324d66318bfa1d22e44913"
+        }
+      ]
+    },
+    {
+      "name": "components/xorg-lib-xxf86vm.bst",
+      "x-cpe": {
+        "product": "libxf86vm",
+        "version": "1.1.6"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.freedesktop.org/xorg/lib/libxxf86vm.git",
+          "commit": "libXxf86vm-1.1.6-0-g4f7497ee3b0deb0418ce48dcd862fd6c23e20064"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap/xxhash.bst",
+      "x-cpe": {
+        "product": "xxhash",
+        "version": "0.8.3"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Cyan4973/xxHash.git",
+          "commit": "v0.8.3-0-ge626a72bc2321cd320e953a0ccf1584cad60f363"
+        }
+      ]
+    },
+    {
+      "name": "components/xxhash.bst",
+      "x-cpe": {
+        "product": "xxhash"
+      },
+      "sources": []
+    },
+    {
+      "name": "components/xz-docs.bst",
+      "x-cpe": {
+        "product": "xz-docs",
+        "version": "5.8.2"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/tukaani-project/xz.git",
+          "commit": "v5.8.2-0-g3d078b52adbff566ccfc51067dfbf742ecf3ef86"
+        }
+      ]
+    },
+    {
+      "name": "components/zenity.bst",
+      "x-cpe": {
+        "product": "zenity",
+        "version": "3.44.5"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/zenity.git",
+          "commit": "3.44.5-0-gdfe1556344eedce4930b8837fbbc8a8334d783e0"
+        }
+      ]
+    },
+    {
+      "name": "components/zip.bst",
+      "x-cpe": {
+        "vendor": "info-zip",
+        "product": "zip",
+        "version": "3.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/infozip/zip30.tar.gz",
+          "sha256": "f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369"
+        },
+        {
+          "type": "patch",
+          "path": "patches/zip/0001-zip-3.0-currdir.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/zip/0002-zip-3.0-exec-shield.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/zip/0003-zip-3.0-format-security.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/zip/0004-zipnote.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/zip/zip-gnu89-build.patch"
+        }
+      ]
+    },
+    {
+      "name": "integration/mtab.bst",
+      "x-cpe": {
+        "product": "mtab"
+      },
+      "sources": []
+    },
+    {
+      "name": "platform.bst",
+      "x-cpe": {
+        "product": "platform"
+      },
+      "sources": []
+    }
+  ]
+}

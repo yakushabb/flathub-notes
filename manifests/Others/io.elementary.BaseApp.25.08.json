@@ -1,0 +1,205 @@
+{
+    "id": "io.elementary.BaseApp",
+    "runtime": "org.gnome.Platform",
+    "sdk": "org.gnome.Sdk",
+    "runtime-version": "49",
+    "branch": "circe-25.08",
+    "modules": [
+        {
+            "name": "libgee",
+            "buildsystem": "autotools",
+            "build-options": {
+                "cflags": "-Wno-error=incompatible-pointer-types"
+            },
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libgee/0.20/libgee-0.20.8.tar.xz",
+                    "sha256": "189815ac143d89867193b0c52b7dc31f3aa108a15f04d6b5dca2b6adfad0b0ee",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "libgee"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sassc",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/sass/sassc/archive/3.6.2.tar.gz",
+                    "sha256": "608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "autoreconf -si"
+                    ]
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libsass",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/sass/libsass/archive/3.6.5.tar.gz",
+                            "sha256": "89d8f2c46ae2b1b826b58ce7dde966a176bac41975b82e84ad46b01a55080582"
+                        },
+                        {
+                            "type": "script",
+                            "dest-filename": "autogen.sh",
+                            "commands": [
+                                "autoreconf -si"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "granite",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/bin",
+                "/share/applications",
+                "/share/metainfo"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/elementary/granite/archive/6.2.0.tar.gz",
+                    "sha256": "067d31445da9808a802fca523630c3e4b84d2d7c78ae547ced017cb7f3b9c6b5",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/elementary/granite/releases",
+                        "version-query": "[.[] | select(.tag_name | test(\"^6\\\\..*$\"))] | max_by(.tag_name) | .tag_name",
+                        "url-query": "\"https://github.com/elementary/granite/archive/\" + ([.[] | select(.tag_name | test(\"^6\\\\..*$\"))] | max_by(.tag_name) | .tag_name) + \".tar.gz\"",
+                        "timestamp-query": "[.[] | select(.tag_name | test(\"^6\\\\..*$\"))] | max_by(.tag_name) | .published_at"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "granite-7",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Ddemo=false"
+            ],
+            "cleanup": [
+                "/share/icons",
+                "/share/metainfo"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/elementary/granite/archive/7.8.0.tar.gz",
+                    "sha256": "df3c3a034ebf5d00d702e418e38c4c68f231930449f6ea2ea7e564364d149b1a",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/elementary/granite/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/elementary/granite/archive/\" + .tag_name + \".tar.gz\"",
+                        "timestamp-query": ".published_at"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "stylesheet",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/share/metainfo"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/elementary/stylesheet/archive/8.2.2.tar.gz",
+                    "sha256": "b5f016c9e7c528d18bb1fa7a405bc294af336a9d967574a66eb22e5fffb89aa9",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/elementary/stylesheet/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/elementary/stylesheet/archive/\" + .tag_name + \".tar.gz\"",
+                        "timestamp-query": ".published_at"
+                    }
+                }
+            ],
+            "post-install": [
+                "ln -s /app/share/themes/io.elementary.stylesheet.blueberry /app/share/themes/elementary"
+            ]
+        },
+        {
+            "name": "icons",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/share/metainfo"
+            ],
+            "config-opts": [
+                "-Dpalettes=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/elementary/icons/archive/8.2.0.tar.gz",
+                    "sha256": "22b235d796d374b22cade7183f9acb8584a551fecd865927a9f0e6562ed67392",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/elementary/icons/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/elementary/icons/archive/\" + .tag_name + \".tar.gz\"",
+                        "timestamp-query": ".published_at"
+                    }
+                }
+            ],
+            "modules": [
+                {
+                    "name": "xcursorgen",
+                    "cleanup": [
+                        "*"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/archive/individual/app/xcursorgen-1.0.9.tar.xz",
+                            "sha256": "0cc9e156ac84ca16ea902710af35e0faffa51d13797071e3b4b6cc7cbd493bbc",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 21210,
+                                "url-template": "https://xorg.freedesktop.org/archive/individual/app/xcursorgen-$version.tar.xz"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "libportal",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbackend-qt5=disabled",
+                "-Dbackend-qt6=disabled",
+                "-Ddocs=false",
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/flatpak/libportal/archive/0.9.1.tar.gz",
+                    "sha256": "ea422b789ae487e04194d387bea031fd7485bf88a18aef8c767f7d1c29496a4e",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/flatpak/libportal/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/flatpak/libportal/archive/\" + .tag_name + \".tar.gz\"",
+                        "timestamp-query": ".published_at"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -2438,60 +2438,7 @@
       "x-cpe": {
         "product": "vulkan-headers",
         "version": "1.4.321"
-      },
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2cd90f9d20df57eac214c148f3aed885372ddcfe"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g06ae73a3dc3a03466817d8370355203dac7b79b1"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2a611a970fdbc41ac2e3e328802aed9985352dca"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g33e02568181e3312f49a3cf33df470bf96ef293a"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/Remove-libSPIRV-Tools-shared.so.patch"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/glslang.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g8a85691a0740d390761a1008b4696f57facd02c4"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Loader.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-gda8d2caad9341ca8c5a7c3deba217d7da50a7c24"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/zeux/volk.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-ga8da8ef3368482b0ee9b0ec0c6079a16a89c6924"
-        },
-        {
-          "type": "patch",
-          "path": "patches/vulkan-tools/unbreak_wayland_1_24.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-headers/llvm21.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/llvm21.patch"
-        }
-      ]
+      }
     },
     {
       "name": "components/wayland.bst",
@@ -2909,60 +2856,7 @@
       "x-cpe": {
         "product": "glslang",
         "version": "1.4.321"
-      },
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2cd90f9d20df57eac214c148f3aed885372ddcfe"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g06ae73a3dc3a03466817d8370355203dac7b79b1"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2a611a970fdbc41ac2e3e328802aed9985352dca"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g33e02568181e3312f49a3cf33df470bf96ef293a"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/Remove-libSPIRV-Tools-shared.so.patch"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/glslang.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g8a85691a0740d390761a1008b4696f57facd02c4"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Loader.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-gda8d2caad9341ca8c5a7c3deba217d7da50a7c24"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/zeux/volk.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-ga8da8ef3368482b0ee9b0ec0c6079a16a89c6924"
-        },
-        {
-          "type": "patch",
-          "path": "patches/vulkan-tools/unbreak_wayland_1_24.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-headers/llvm21.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/llvm21.patch"
-        }
-      ]
+      }
     },
     {
       "name": "components/gnu-free-fonts.bst",
@@ -5549,60 +5443,7 @@
       "x-cpe": {
         "product": "vulkan-icd-loader",
         "version": "1.4.321"
-      },
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2cd90f9d20df57eac214c148f3aed885372ddcfe"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g06ae73a3dc3a03466817d8370355203dac7b79b1"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g2a611a970fdbc41ac2e3e328802aed9985352dca"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g33e02568181e3312f49a3cf33df470bf96ef293a"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/Remove-libSPIRV-Tools-shared.so.patch"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/glslang.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-g8a85691a0740d390761a1008b4696f57facd02c4"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/KhronosGroup/Vulkan-Loader.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-gda8d2caad9341ca8c5a7c3deba217d7da50a7c24"
-        },
-        {
-          "type": "git",
-          "url": "https://github.com/zeux/volk.git",
-          "commit": "vulkan-sdk-1.4.321.0-0-ga8da8ef3368482b0ee9b0ec0c6079a16a89c6924"
-        },
-        {
-          "type": "patch",
-          "path": "patches/vulkan-tools/unbreak_wayland_1_24.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-headers/llvm21.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/spirv-tools/llvm21.patch"
-        }
-      ]
+      }
     },
     {
       "name": "components/ffmpeg.bst",

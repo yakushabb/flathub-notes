@@ -2351,14 +2351,6 @@
           ],
           "type" : "shell"
         }
-      ],
-      "cleanup" : [
-        "/bin",
-        "*.a",
-        "/include/editorconfig",
-        "*.pc",
-        "/lib/*/cmake/EditorConfig",
-        "libeditorconfig.so"
       ]
     },
     {
@@ -2733,12 +2725,6 @@
               ],
               "type" : "shell"
             }
-          ],
-          "cleanup" : [
-            "/include/ZXing",
-            "*.pc",
-            "/lib/*/cmake/ZXing",
-            "libZXing.so"
           ]
         }
       ]
@@ -3135,36 +3121,6 @@
         "mkdir -p /usr/share/runtime/lib/plugins/"
       ]
     }
-  ],
-  "cleanup" : [
-    "/man",
-    "/share/man",
-    "/lib/systemd",
-    "*.la"
-  ],
-  "cleanup-commands" : [
-    "/usr/libexec/freedesktop-post.sh",
-    "mkdir -p /usr/lib/debug/usr/lib/i386-linux-gnu"
-  ],
-  "cleanup-platform-commands" : [
-    "/usr/libexec/freedesktop-post.sh"
-  ],
-  "cleanup-platform" : [
-    "/share/runtime/docs",
-    "/include",
-    "/share/aclocal",
-    "/share/pkgconfig",
-    "/lib/pkgconfig",
-    "/lib/*/pkgconfig",
-    "*.a",
-    "*.cmake",
-    "/lib/*/cmake",
-    "/mkspecs",
-    "/lib/mkspecs",
-    "*.prl",
-    "/lib/metatypes",
-    "kde-qmlmodule.version",
-    "*.qmltypes"
   ],
   "build-runtime" : true,
   "sdk-extensions" : [

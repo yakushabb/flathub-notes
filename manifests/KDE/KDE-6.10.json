@@ -354,32 +354,6 @@
               ],
               "type" : "shell"
             }
-          ],
-          "cleanup" : [
-            "/bin/adig",
-            "/bin/ahost",
-            "/include/upb",
-            "/include/google/protobuf",
-            "/include/grpc*",
-            "/include/re2*",
-            "/include/utf8_*.h",
-            "/include/ares*.h",
-            "*.pc",
-            "/lib/*/cmake/utf8_range",
-            "/lib/*/cmake/protobuf",
-            "/lib/*/cmake/c-ares",
-            "/lib/*/cmake/grpc",
-            "/lib/*/cmake/re2",
-            "/share/man",
-            "/share/grpc/roots.pem",
-            "*.a"
-          ],
-          "cleanup-platform" : [
-            "/bin/grpc_cpp_plugin",
-            "/bin/protoc*",
-            "/share/grpc",
-            "/lib/cmake/grpc",
-            "/lib/libexec/qtgrpcgen"
           ]
         }
       ]
@@ -2396,14 +2370,6 @@
           ],
           "type" : "shell"
         }
-      ],
-      "cleanup" : [
-        "/bin",
-        "*.a",
-        "/include/editorconfig",
-        "*.pc",
-        "/lib/*/cmake/EditorConfig",
-        "libeditorconfig.so"
       ]
     },
     {
@@ -2778,12 +2744,6 @@
               ],
               "type" : "shell"
             }
-          ],
-          "cleanup" : [
-            "/include/ZXing",
-            "*.pc",
-            "/lib/*/cmake/ZXing",
-            "libZXing.so"
           ]
         }
       ]
@@ -3180,36 +3140,6 @@
         "mkdir -p /usr/share/runtime/lib/plugins/"
       ]
     }
-  ],
-  "cleanup" : [
-    "/man",
-    "/share/man",
-    "/lib/systemd",
-    "*.la"
-  ],
-  "cleanup-commands" : [
-    "/usr/libexec/freedesktop-post.sh",
-    "mkdir -p /usr/lib/debug/usr/lib/i386-linux-gnu"
-  ],
-  "cleanup-platform-commands" : [
-    "/usr/libexec/freedesktop-post.sh"
-  ],
-  "cleanup-platform" : [
-    "*.a",
-    "*.cmake",
-    "*.prl",
-    "*.qmltypes",
-    "/include",
-    "/lib/*/cmake",
-    "/lib/*/pkgconfig",
-    "/lib/metatypes",
-    "/lib/mkspecs",
-    "/lib/pkgconfig",
-    "/mkspecs",
-    "/share/aclocal",
-    "/share/pkgconfig",
-    "/share/runtime/docs",
-    "kde-qmlmodule.version"
   ],
   "build-runtime" : true,
   "sdk-extensions" : [

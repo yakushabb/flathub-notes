@@ -2836,7 +2836,7 @@
       "name": "sdk/librsvg.bst",
       "x-cpe": {
         "product": "librsvg",
-        "version": "2.60.1"
+        "version": "2.60.2"
       }
     },
     {
@@ -5454,6 +5454,20 @@
       ]
     },
     {
+      "name": "sdk-deps/pipewire.bst",
+      "x-cpe": {
+        "product": "pipewire",
+        "version": "1.2.7"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.2.7/pipewire-1.2.7.tar.bz2",
+          "sha256": "3c00292f9a419610c9eeb6e45b958d460afb601ecc6894012574a3b9f118616a"
+        }
+      ]
+    },
+    {
       "name": "components/pipewire.bst",
       "x-cpe": {
         "product": "pipewire"
@@ -6120,13 +6134,13 @@
       "name": "sdk/libadwaita.bst",
       "x-cpe": {
         "product": "libadwaita",
-        "version": "1.7.10"
+        "version": "1.7.11"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/libadwaita/1.7/libadwaita-1.7.10.tar.xz",
-          "sha256": "50435b2b2d49be19cd9b0b84d2bb775b8741e71e2555d26a73f81d1ab1e29033"
+          "url": "https://download.gnome.org/sources/libadwaita/1.7/libadwaita-1.7.11.tar.xz",
+          "sha256": "d809df0388afaa1bf6605e76f54a7801abdaedf44a7ff09c5d9dfddb0bcf8343"
         }
       ]
     },
@@ -6172,7 +6186,21 @@
         }
       ]
     },
-     {
+    {
+      "name": "sdk-deps/hidapi.bst",
+      "x-cpe": {
+        "product": "hidapi",
+        "version": "0.14.0"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/libusb/hidapi/archive/refs/tags/hidapi-0.14.0.tar.gz",
+          "sha256": "a5714234abe6e1f53647dd8cba7d69f65f71c558b7896ed218864ffcf405bcbd"
+        }
+      ]
+    },
+    {
       "name": "sdk/libmanette.bst",
       "x-cpe": {
         "product": "libmanette",
@@ -6190,13 +6218,13 @@
       "name": "sdk/webkit2gtk-4.1.bst",
       "x-cpe": {
         "product": "webkitgtk+",
-        "version": "2.50.4"
+        "version": "2.50.5"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.4.tar.xz",
-          "sha256": "d3bfa473845acfab72635bada5e0d134fda6792c5b95c5c5cd141b46125bd8e4"
+          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz",
+          "sha256": "8737631bac3e9c7ad3e5208f9370e076c09d9c45b39980021ce54edadcc6f94f"
         }
       ]
     },
@@ -6281,13 +6309,13 @@
       "name": "sdk/webkitgtk-6.0.bst",
       "x-cpe": {
         "product": "webkitgtk+",
-        "version": "2.50.4"
+        "version": "2.50.5"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.4.tar.xz",
-          "sha256": "d3bfa473845acfab72635bada5e0d134fda6792c5b95c5c5cd141b46125bd8e4"
+          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz",
+          "sha256": "8737631bac3e9c7ad3e5208f9370e076c09d9c45b39980021ce54edadcc6f94f"
         }
       ]
     },

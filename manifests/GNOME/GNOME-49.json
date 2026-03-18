@@ -1623,13 +1623,13 @@
       "name": "sdk/krb5.bst",
       "x-cpe": {
         "product": "kerberos_5",
-        "version": "1.22.1"
+        "version": "1.22.2"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://kerberos.org/dist/krb5/1.22/krb5-1.22.1.tar.gz",
-          "sha256": "1a8832b8cad923ebbf1394f67e2efcf41e3a49f460285a66e35adec8fa0053af"
+          "url": "https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz",
+          "sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13"
         }
       ]
     },
@@ -1943,13 +1943,13 @@
       "name": "sdk/gdk-pixbuf.bst",
       "x-cpe": {
         "product": "gdk-pixbuf",
-        "version": "2.44.4"
+        "version": "2.44.5"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/gdk-pixbuf/2.44/gdk-pixbuf-2.44.4.tar.xz",
-          "sha256": "93a1aac3f1427ae73457397582a2c38d049638a801788ccbd5f48ca607bdbd17"
+          "url": "https://download.gnome.org/sources/gdk-pixbuf/2.44/gdk-pixbuf-2.44.5.tar.xz",
+          "sha256": "69b93e09139b80c0ee661503d60deb5a5874a31772b5184b9cd5462a4100ab68"
         }
       ]
     },
@@ -5614,13 +5614,13 @@
       "name": "sdk/libadwaita.bst",
       "x-cpe": {
         "product": "libadwaita",
-        "version": "1.8.3"
+        "version": "1.8.4"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.gnome.org/sources/libadwaita/1.8/libadwaita-1.8.3.tar.xz",
-          "sha256": "a362fe72a9b58ae5e64e876d2f5e11c90a72351cb6c0dae7f4d1a436358a217e"
+          "url": "https://download.gnome.org/sources/libadwaita/1.8/libadwaita-1.8.4.tar.xz",
+          "sha256": "d02bb77b6f0ff1055002d299898c487cb2d83dbf940d9edf59f6fdf2572a921c"
         }
       ]
     },
@@ -5768,13 +5768,13 @@
       "name": "sdk/webkit2gtk-4.1.bst",
       "x-cpe": {
         "product": "webkitgtk+",
-        "version": "2.50.4"
+        "version": "2.50.5"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.4.tar.xz",
-          "sha256": "d3bfa473845acfab72635bada5e0d134fda6792c5b95c5c5cd141b46125bd8e4"
+          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz",
+          "sha256": "8737631bac3e9c7ad3e5208f9370e076c09d9c45b39980021ce54edadcc6f94f"
         }
       ]
     },
@@ -5782,13 +5782,13 @@
       "name": "sdk/webkitgtk-6.0.bst",
       "x-cpe": {
         "product": "webkitgtk+",
-        "version": "2.50.4"
+        "version": "2.50.5"
       },
       "sources": [
         {
           "type": "archive",
-          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.4.tar.xz",
-          "sha256": "d3bfa473845acfab72635bada5e0d134fda6792c5b95c5c5cd141b46125bd8e4"
+          "url": "https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz",
+          "sha256": "8737631bac3e9c7ad3e5208f9370e076c09d9c45b39980021ce54edadcc6f94f"
         }
       ]
     },

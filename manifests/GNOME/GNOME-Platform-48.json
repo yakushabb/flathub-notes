@@ -6108,20 +6108,6 @@
       ]
     },
     {
-      "name": "void/zenity.bst",
-      "x-cpe": {
-        "product": "zenity"
-      },
-      "sources": []
-    },
-    {
-      "name": "platform.bst",
-      "x-cpe": {
-        "product": "platform"
-      },
-      "sources": []
-    },
-    {
       "name": "components/bash-completion.bst",
       "x-cpe": {
         "product": "bash-completion",

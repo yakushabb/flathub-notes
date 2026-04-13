@@ -7321,34 +7321,6 @@
       ]
     },
     {
-      "name": "components/xxhash.bst",
-      "x-cpe": {
-        "product": "xxhash"
-      },
-      "sources": []
-    },
-    {
-      "name": "integration/mtab.bst",
-      "x-cpe": {
-        "product": "mtab"
-      },
-      "sources": []
-    },
-    {
-      "name": "void/zenity.bst",
-      "x-cpe": {
-        "product": "zenity"
-      },
-      "sources": []
-    },
-    {
-      "name": "platform.bst",
-      "x-cpe": {
-        "product": "platform"
-      },
-      "sources": []
-    },
-    {
       "name": "sdk/gcr.bst",
       "x-cpe": {
         "product": "gcr",

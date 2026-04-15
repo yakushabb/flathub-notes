@@ -1,12 +1,17 @@
 {
   "id" : "org.kde.Sdk",
   "id-platform" : "org.kde.Platform",
-  "branch" : "5.15-24.08",
+  "branch" : "6.10",
   "runtime" : "org.freedesktop.Platform",
-  "runtime-version" : "24.08",
-  "runtime-commit" : "8c6cba630eb51fb2af2dcb6b00ecc49954724fa7c1149ed3d4c4e5318ba347a5",
+  "runtime-version" : "25.08",
+  "runtime-commit" : "18c4d2cd492ef63f2ba38cd06de0149d2542404144a0e0f6ebe0dfe5f7dbb680",
   "sdk" : "org.freedesktop.Sdk",
-  "sdk-commit" : "c54595c96eb068fc18e05e8b3d1cda7e0e2b19cd9ad818af6ed6431c9c0a3a60",
+  "sdk-commit" : "37c47d7f28c28226e100f12b23e5bfce0a8a0a22f6d6dc720f202ab31bf49e05",
+  "build-options" : {
+    "env" : {
+      "CMAKE_BUILD_TYPE" : "RelWithDebInfo"
+    }
+  },
   "modules" : [
     {
       "name" : "licence-extractor",
@@ -28,77 +33,45 @@
       ]
     },
     {
-      "name" : "qt5-qtbase",
+      "name" : "qt6-qtbase",
+      "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-confirm-license",
-        "-opensource",
-        "-shared",
-        "-platform",
-        "linux-g++",
-        "-optimized-qmake",
-        "-nomake",
-        "examples",
-        "-nomake",
-        "tests",
-        "-system-harfbuzz",
-        "-system-sqlite",
-        "-accessibility",
-        "-dbus-linked",
-        "-fontconfig",
-        "-glib",
-        "-icu",
-        "-openssl-linked",
-        "-no-pch",
-        "-no-rpath",
-        "-no-directfb",
-        "-no-linuxfb",
-        "-no-kms",
-        "-system-proxies",
-        "-gtk",
-        "-no-use-gold-linker",
-        "-archdatadir",
-        "/usr/lib/"
+        "-DINSTALL_ARCHDATADIR=lib",
+        "-DQT_DISABLE_RPATH=ON",
+        "-DBUILD_WITH_PCH=FALSE",
+        "-DQT_FEATURE_openssl_linked=ON",
+        "-DQT_FEATURE_system_sqlite=ON"
       ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtbase.git",
-          "commit" : "c5b9db065ca5682b0bee339197c847da8b2710c1",
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtbase-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "aeb78d29291a2b5fd53cb55950f8f5065b4978c25fb1d77f627d695ab9adf21e",
           "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtbase/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtbase-everywhere-src-$version.tar.xz"
           },
-          "type" : "git"
+          "type" : "archive"
         },
         {
-          "path" : "patch/qtbase-avoid-hardcoding-kernel-version.patch",
-          "type" : "patch"
-        },
-        {
-          "path" : "patch/qtbase-revert-qstandardpaths-dont-change-permissions-on-xdg-runtime-dir.patch",
-          "type" : "patch"
-        },
-        {
-          "path" : "patch/qtbase-use-wayland-on-gnome.patch",
-          "type" : "patch"
-        },
-        {
-          "commands" : [
-            "mv configure configure.qt"
+          "paths" : [
+            "patch/qtbase-find_package-paths.patch"
           ],
-          "type" : "shell"
+          "type" : "patch"
         },
         {
-          "commands" : [
-            "processed=`sed -e 's/--/-/g ; s/=/ /g' <<< $@`",
-            "./configure.qt $processed"
+          "paths" : [
+            "patch/qtbase-use-adwaita-decorations-on-gnome-by-default.patch"
           ],
-          "dest-filename" : "configure",
-          "type" : "script"
+          "type" : "patch"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -107,14 +80,12 @@
         "arch" : {
           "aarch64" : {
             "config-opts" : [
-              "-no-reduce-relocations",
-              "-opengl es2"
+              "-DINSTALL_LIBDIR=/usr/lib/aarch64-linux-gnu"
             ]
           },
           "x86_64" : {
             "config-opts" : [
-              "-reduce-relocations",
-              "-force-debug-info"
+              "-DINSTALL_LIBDIR=/usr/lib/x86_64-linux-gnu"
             ]
           }
         }
@@ -124,48 +95,26 @@
       ]
     },
     {
-      "name" : "qt5-qtdeclarative",
-      "buildsystem" : "qmake",
+      "name" : "qt6-qttools",
+      "buildsystem" : "cmake-ninja",
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtdeclarative.git",
-          "commit" : "11ea94fc8ea95d0ba95745a021a1b139283b8b36",
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qttools-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "1e3d2c07c1fd76d2425c6eaeeaa62ffaff5f79210c4e1a5bc2a6a9db668d5b24",
           "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtdeclarative/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qttools-everywhere-src-$version.tar.xz"
           },
-          "type" : "git"
+          "type" : "archive"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin",
-        "lib/plugins/qmltooling"
-      ]
-    },
-    {
-      "name" : "qt5-qttools",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qttools.git",
-          "commit" : "e02ce0dfa692913bd5dcc50917f7e21f5a41cd2b",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqttools/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -189,17 +138,56 @@
       ]
     },
     {
-      "name" : "qt5-qtscript",
-      "buildsystem" : "qmake",
+      "name" : "qt6-shadertools",
+      "buildsystem" : "cmake-ninja",
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtscript.git",
-          "commit" : "4f8c35a528586541ea55bb8b3361eaa6749e52b1",
-          "type" : "git"
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtshadertools-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "18d9dbbc4f7e6e96e6ed89a9965dc032e2b58158b65156c035537826216716c9",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtshadertools-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin",
+        "lib/plugins/qmltooling"
+      ]
+    },
+    {
+      "name" : "qt6-qtlanguageserver",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtlanguageserver-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "9a043f2c84b0b470065fc7a954dc4ff0388db3e1b2c457c3d69670baecc40d53",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtlanguageserver-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -209,22 +197,59 @@
       ]
     },
     {
-      "name" : "qt5-webchannel",
-      "buildsystem" : "qmake",
+      "name" : "qt6-qtdeclarative",
+      "buildsystem" : "cmake-ninja",
+      "config-opts" : [
+        "-DQT_TOOL_COMMAND_WRAPPER_PATH=env"
+      ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtwebchannel.git",
-          "commit" : "85ba097de9759efe5563156e43de1ad8473d5d54",
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtdeclarative-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "a249914ff66cdcdbf0df8b5ffad997a2ee6dce01cc17d43c6cc56fdc1d0f4b0f",
           "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtwebchannel/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtdeclarative-everywhere-src-$version.tar.xz"
           },
-          "type" : "git"
+          "type" : "archive"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin",
+        "lib/plugins/qmltooling"
+      ]
+    },
+    {
+      "name" : "qt6-webchannel",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtwebchannel-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "e31ea59f8e19e0374d54fdc7a8479c840acffc4ba5297ee43564b5158a4f2c27",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtwebchannel-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -234,22 +259,26 @@
       ]
     },
     {
-      "name" : "qt5-qtlocation",
-      "buildsystem" : "qmake",
+      "name" : "qt6-qtpositioning",
+      "buildsystem" : "cmake-ninja",
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtlocation.git",
-          "commit" : "c6e6c63e8566fc75551cb901c3b5939b39e7a25c",
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtpositioning-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "7051fa64477c66769840cad396fc3772a01ba5516363c8842a7a513fa0c4cdce",
           "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtlocation/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtpositioning-everywhere-src-$version.tar.xz"
           },
-          "type" : "git"
+          "type" : "archive"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -259,422 +288,30 @@
       ]
     },
     {
-      "name" : "qt5-qtsvg",
-      "buildsystem" : "qmake",
+      "name" : "qt6-qtgrpc",
+      "buildsystem" : "cmake-ninja",
       "sources" : [
         {
-          "url" : "https://invent.kde.org/qt/qt/qtsvg.git",
-          "commit" : "9c149213f46b844607cf7db8f800d906db3a682f",
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtgrpc-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "7386bfc9c10c7920e5ff22dcf067e95f379bb379e4d916269f4465ab295ed136",
           "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtsvg/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtgrpc-everywhere-src-$version.tar.xz"
           },
-          "type" : "git"
+          "type" : "archive"
+        },
+        {
+          "path" : "patch/qtgrpc-find_program-paths.patch",
+          "type" : "patch"
         },
         {
           "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtx11extras",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtx11extras.git",
-          "commit" : "e6e7633bbd0efcc56035fef77f3f45efccf03a64",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtx11extras/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtmultimedia",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtmultimedia.git",
-          "commit" : "d342547886448dacf38d2933cd40322c7435ee86",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtmultimedia/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtsensors",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtsensors.git",
-          "commit" : "79ed5db98f36b8ca70b077edef46fc793debb3ab",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtsensors/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtquickcontrols",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtquickcontrols.git",
-          "commit" : "37ee5e07e82296e24cc02c8bf6f31cb6bd8846b1",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtquickcontrols/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtquickcontrols2",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtquickcontrols2.git",
-          "commit" : "9bdcebd1c093b6f0886e3a739711470cc37b1adb",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtquickcontrols2/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtgraphicaleffects",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtgraphicaleffects.git",
-          "commit" : "fed60f95ddb75103f83cf67bf2c9f471e49576fe",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtgraphicaleffects/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtxmlpatterns",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtxmlpatterns.git",
-          "commit" : "e645537910450ba8bf5ecfbb735f69acdeeef046",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtxmlpatterns/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtimageformats",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtimageformats.git",
-          "commit" : "f86afca95741b9c06202fd13c2b8c01d922a0e24",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtimageformats/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-connectivity",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtconnectivity.git",
-          "commit" : "15961348aa26b73248432a0a274b332c36cd0054",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtconnectivity/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-wayland",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtwayland.git",
-          "commit" : "c1ac089f3f37ab172d8010b0fabf4007d62d1812",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtwayland/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-virtualkeyboard",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtvirtualkeyboard.git",
-          "commit" : "0d229d587e578fb4a5144594b926d5d3138c407e",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtvirtualkeyboard/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtserialport",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtserialport.git",
-          "commit" : "9bb2b66259413ac4eda1ddf64209ef44412aa55d",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtserialport/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtwebsockets",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtwebsockets.git",
-          "commit" : "db9cb84499229143506a9692fc65d3cb223b3978",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtwebsockets/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtcharts",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtcharts.git",
-          "commit" : "aaf04515611203a32cef866cce9bfeaa4cef20b6",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtcharts/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qt3d",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qt3d.git",
-          "commit" : "73c1dda553f338c5a3b9ebbfd0e7de114f0c93dc",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqt3d/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtspeech",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtspeech.git",
-          "commit" : "088b86a0e53ebb714c1276d041ab2c06fee58e6e",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtspeech/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -684,150 +321,705 @@
       ],
       "modules" : [
         {
-          "name" : "flite",
+          "name" : "grpc",
+          "buildsystem" : "cmake-ninja",
           "config-opts" : [
-            "--enable-shared"
-          ],
-          "make-args" : [
-            "-j 1"
+            "-DgRPC_BUILD_TESTS=OFF",
+            "-DgRPC_BUILD_CODEGEN=ON",
+            "-DgRPC_DOWNLOAD_ARCHIVES=OFF",
+            "-DgRPC_ZLIB_PROVIDER=package",
+            "-DgRPC_SSL_PROVIDER=package",
+            "-DgRPC_ABSL_PROVIDER=package",
+            "-DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF",
+            "-DgRPC_BUILD_GRPCPP_OTEL_PLUGIN=OFF"
           ],
           "sources" : [
             {
-              "url" : "https://github.com/festvox/flite/archive/v2.2/flite-2.2.tar.gz",
-              "sha256" : "ab1555fe5adc3f99f1d4a1a0eb1596d329fd6d74f1464a0097c81f53c0cf9e5c",
+              "url" : "https://github.com/grpc/grpc",
+              "commit" : "5b6492ea90b2b867a6adad1b10a6edda28e860d1",
               "x-checker-data" : {
-                "type" : "anitya",
-                "project-id" : 14809,
-                "url-template" : "https://github.com/festvox/flite/archive/v$version/flite-$version.tar.gz"
+                "type" : "git",
+                "tag-pattern" : "^(v[\\d.]+)$"
               },
-              "type" : "archive"
+              "type" : "git"
+            },
+            {
+              "commands" : [
+                "LICENSES='LICENSE' install-licenses.sh"
+              ],
+              "type" : "shell"
             }
           ],
           "cleanup" : [
+            "/bin/adig",
+            "/bin/ahost",
+            "/include/upb",
+            "/include/google/protobuf",
+            "/include/grpc*",
+            "/include/re2*",
+            "/include/utf8_*.h",
+            "/include/ares*.h",
+            "*.pc",
+            "/lib/*/cmake/utf8_range",
+            "/lib/*/cmake/protobuf",
+            "/lib/*/cmake/c-ares",
+            "/lib/*/cmake/grpc",
+            "/lib/*/cmake/re2",
+            "/share/man",
+            "/share/grpc/roots.pem",
             "*.a"
+          ],
+          "cleanup-platform" : [
+            "/bin/grpc_cpp_plugin",
+            "/bin/protoc*",
+            "/share/grpc",
+            "/lib/cmake/grpc",
+            "/lib/libexec/qtgrpcgen"
           ]
         }
       ]
     },
     {
-      "name" : "qt5-qtnetworkauth",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtnetworkauth.git",
-          "commit" : "2653044915b3fb1941aa0f8b25af50343efcbff7",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtnetworkauth/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtgamepad",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtgamepad.git",
-          "commit" : "fb2191db07738c9a954a77c2fb15dcb925a4c361",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtgamepad/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qttranslations",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qttranslations.git",
-          "commit" : "fd567a42c1b566f22f339db758d29925fd2a8c60",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqttranslations/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "qt5-qtremoteobjects",
-      "buildsystem" : "qmake",
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/qt/qt/qtremoteobjects.git",
-          "commit" : "e060a0990380134c054bde675d47db048fd3192f",
-          "x-checker-data" : {
-            "type" : "json",
-            "url" : "https://invent.kde.org/api/v4/projects/qt%2Fqt%2Fqtremoteobjects/repository/commits?ref_name=kde/5.15&per_page=1",
-            "commit-query" : "first(.[]).id"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='LICENSE*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "/bin"
-      ]
-    },
-    {
-      "name" : "libdbusmenuqt",
+      "name" : "qt6-qtsvg",
       "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF",
-        "-DWITH_DOC=OFF"
-      ],
       "sources" : [
         {
-          "url" : "https://github.com/unity8-team/libdbusmenu-qt.git",
-          "commit" : "7a248954eb6a33faa8d6d1230056cab9b32edd87",
-          "type" : "git"
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtsvg-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "f07ff80f38caf235187200345392ca7479445ddf49a36c3694cd52a735dad6e1",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtsvg-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
         },
         {
           "commands" : [
-            "LICENSES='COPYING' install-licenses.sh"
+            "install-licenses.sh"
           ],
           "type" : "shell"
         }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtmultimedia",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtmultimedia-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "93f7ef0106fbd731165a2723f3e436c911fc5e6880f5bc987b55516c20833e2b",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtmultimedia-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtspeech",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtspeech-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "d937f6c715792b0d8f036e94513ebfc8def6b988a65f3ff30a7f4a8cc1263014",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtspeech-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtsensors",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtsensors-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "91e6515b7cebbfae3696861933f5359cc303dfe82f7849cf5a10df378c8ef581",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtsensors-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtimageformats",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtimageformats-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "8b8f9c718638081e7b3c000e7f31910140b1202a98e98df5d1b496fe6f639d67",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtimageformats-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-connectivity",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtconnectivity-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "cf58f021f32857b5b6799cd4404ef613399ecc1c515492f0f620ce338a311a32",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtconnectivity-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-wayland",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtwayland-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "391998eb432719df26a6a67d8efdc67f8bf2afdd76c1ee3381ebff4fe7527ee2",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtwayland-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtserialport",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtserialport-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "b40cbf29da111ffa8fee7e7cb44b9097042782cd17a10448a83ff3156cdebd6b",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtserialport-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtwebsockets",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtwebsockets-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "eccc751bea509ef656d20029693987a0fc03c58e21c38f1351480f3c8eb42ebd",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtwebsockets-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtscxml",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtscxml-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "0f9c178db3f1b1b06d20172aaaa4d7f5513bcb99de01f880c29e23b5ffdd236a",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtscxml-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtcharts",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtcharts-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "405116b4c5eded981484c4c154eb392d44b69b587342f1193181175e309f2c00",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtcharts-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qt3d",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qt3d-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "febbca9d491feca0fa2d770e912590b4ef18e461f739ca6e855ea62a488bbb6d",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qt3d-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtnetworkauth",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtnetworkauth-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "4f29fd9e4b505f5714fc42296b04c701f66ced185c49de4d520cb8de4b1981b3",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtnetworkauth-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qttranslations",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qttranslations-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "b3b3813bc9d76b545716dc8b6e659fa71b6e2bc14569e9fab6dab8b30650a644",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qttranslations-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtremoteobjects",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtremoteobjects-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "bc683f044fe74dcf06c2b47f31fff2d967b5ac81896620108697dcc942eb65cd",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtremoteobjects-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qt5compat",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qt5compat-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "3fa418f0fac02eb9efc5f762fbe25f20647b0ebb7fa92faf07e6de85044161c2",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qt5compat-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtlocation",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtlocation-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "d313f05dedc593517c47d0fa3eb131a2597c01db23de263fe89fea561be50f3c",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtlocation-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtquicktimeline",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtquicktimeline-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "7032d8b758d21fdf790dde0d070e1c82819abcf5ee7194dbf21589dbdfd36324",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtquicktimeline-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtquick3d",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtquick3d-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "b95439f31d1e580c379e9828b48b03b932b0bdade4ff09f4dd639eff9da2cd75",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtquick3d-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtquick3dphysics",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtquick3dphysics-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "b7aff67bd05794351d7c19b178c54b674afc3ea2b4632df892aaee98f12c1cdb",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtquick3dphysics-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qtquickeffectmaker",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qtquickeffectmaker-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "e3caf13b4e0c0d9e6d696192137615e8e748d7999272c74472945067f469c2c4",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qtquickeffectmaker-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
+      ]
+    },
+    {
+      "name" : "qt6-qthttpserver",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.qt.io/official_releases/qt/6.10/6.10.2/submodules/qthttpserver-everywhere-src-6.10.2.tar.xz",
+          "sha256" : "26568d59bee258fd35297823d2f7839ef1337042a009b752769e688703fe4643",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 7927,
+            "stable-only" : true,
+            "versions" : {
+              "<" : "6.11.0"
+            },
+            "url-template" : "https://download.qt.io/official_releases/qt/6.10/$version/submodules/qthttpserver-everywhere-src-$version.tar.xz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "/bin"
       ]
     },
     {
@@ -839,13 +1031,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/extra-cmake-modules.git",
-          "commit" : "120dd3b40de4f4314f0ab819fd9b8d6db5247adb",
+          "commit" : "4817596f8a0d16aa6c990c6862ab2420638dfe6e",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6\\.([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -861,18 +1050,41 @@
       ]
     },
     {
-      "name" : "plasma-wayland-protocols",
+      "name" : "fcitx5-platforminputcontext",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DENABLE_QT4=OFF",
+        "-DENABLE_QT5=OFF",
+        "-DENABLE_QT6=ON",
+        "-DBUILD_ONLY_PLUGIN=ON"
       ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/libraries/plasma-wayland-protocols.git",
-          "commit" : "b91ea77bcf168fca6676f40568ad622f5e0fd25a",
+          "url" : "https://github.com/fcitx/fcitx5-qt",
+          "commit" : "51cc53b68c792a87bebee60e29e09593044b67ed",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v([\\d.]+)$"
+            "tag-pattern" : "^([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "plasma-wayland-protocols",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/libraries/plasma-wayland-protocols.git",
+          "commit" : "a3a088d5de5127c1f32d717e1b7e19b8574e1adc",
+          "x-checker-data" : {
+            "type" : "git"
           },
           "type" : "git"
         },
@@ -888,18 +1100,16 @@
       "name" : "kwidgetsaddons",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kwidgetsaddons.git",
-          "commit" : "fb4beb317da16e6b1d2f027babd7ec415e6576a9",
+          "commit" : "d340765a2e3e393b922f1e761bd05db09baa9b56",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -920,13 +1130,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/ki18n.git",
-          "commit" : "cdd0a0a2672d20cbe1923410bc55e652434bb506",
+          "commit" : "b12d8e881305d2973253f99f97e8d2496272e5f6",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -947,13 +1154,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kconfig.git",
-          "commit" : "2720532fb3481629b515d8dfcbfb0955fb77130f",
+          "commit" : "06d7fe1eb504c1c5ab7ed979b66087ebddd63592",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -974,13 +1178,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/attica.git",
-          "commit" : "02ef4ac20540da5351423c2f5bbf66c43d21ab8e",
+          "commit" : "bbc83cd8c89cb4f38d2d7103138fbae93952b91b",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -996,18 +1197,16 @@
       "name" : "kguiaddons",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kguiaddons.git",
-          "commit" : "6ef9411c3f61d2d55601798d5912180139c485d4",
+          "commit" : "65f2e327311fc47d851a6abb2948ddbd1d6d41a3",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1023,18 +1222,16 @@
       "name" : "kcoreaddons",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcoreaddons.git",
-          "commit" : "9cd1b2e5407ff8c358e69e15d321c69947aca7b6",
+          "commit" : "4f720654d5ea2a7cca97ea2be1cee21c432872a3",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1055,13 +1252,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kauth.git",
-          "commit" : "be01813ffb145f1d86cae060e92f84c2887db292",
+          "commit" : "74c2f8da5eacd22e48d20326f896b1fb787e7de2",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1077,19 +1271,15 @@
       "name" : "karchive",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF",
-        "-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=TRUE"
+        "-DBUILD_TESTING=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/karchive.git",
-          "commit" : "aedeb2001a333b141375f8dc4e5e86440bcb019e",
+          "commit" : "9d520ec7a326bf41104bfbaff470f3f974988777",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1110,13 +1300,34 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcodecs.git",
-          "commit" : "9240ee01ce5366324b93d5cce5b486ae7304c8e9",
+          "commit" : "7176d3aaea33f9465b1a902e1746975cde0a02b8",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "kcolorscheme",
+      "buildsystem" : "cmake-ninja",
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/frameworks/kcolorscheme.git",
+          "commit" : "4bfa2ddc1961a25107d75c4bc949c5b20a2f92c2",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1137,13 +1348,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kconfigwidgets.git",
-          "commit" : "0065af85c9367d71f12f8404d400400aa40b87a4",
+          "commit" : "a1f6b2d5f6e0b0dc9e4cf494909c65506c62e522",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1164,13 +1372,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kitemviews.git",
-          "commit" : "57f3eb1997f4c48ccdf25b6fad7906e11d7908b9",
+          "commit" : "a6b8bb5da36397da6df93f2fd13c47238cf26d65",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1183,6 +1388,35 @@
       ]
     },
     {
+      "name" : "breeze-icons",
+      "buildsystem" : "cmake-ninja",
+      "builddir" : true,
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF",
+        "-DWITH_ICON_GENERATION=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/frameworks/breeze-icons.git",
+          "commit" : "58470f5d6e9c8d231086a9b382b4087fa6c00aeb",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "LICENSES='COPYING*' install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ],
+      "cleanup-platform" : [
+        "*.rcc"
+      ]
+    },
+    {
       "name" : "kiconthemes",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
@@ -1191,13 +1425,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kiconthemes.git",
-          "commit" : "e5cbd66a40f36578aec68dfc0cf125eb6f619c2a",
+          "commit" : "1bcccb7eb98c435a6b4fbbebc53c80375a5c0cc5",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1218,13 +1449,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kwindowsystem.git",
-          "commit" : "9dcdbd371360f29ad07d9b85954e8c65ea5a880a",
+          "commit" : "a3f39452fbd79d1e8a562fb5d25a6bf474dce63f",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1245,13 +1473,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcrash.git",
-          "commit" : "1660aa552d7460e447bc44f34f8097888e8dcaca",
+          "commit" : "2134d55c78f4311d947f88bd86698b2af5b3f5de",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1272,13 +1497,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kdbusaddons.git",
-          "commit" : "1bfe7900e2d9c95939e5516864eb7de5924593a9",
+          "commit" : "116eb25656d0d135ddbbc38bd1b382a151eb0557",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1300,13 +1522,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kservice.git",
-          "commit" : "ee09fac9e21936b623df6b4789ea5d7bf8bb633a",
+          "commit" : "76ba4e3a2580c3a96ac24e4f613363f6251001ed",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1327,13 +1546,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kglobalaccel.git",
-          "commit" : "a9ca9ff442c077d99a293bccef314268cb5784f0",
+          "commit" : "85a99d5a91a4290be0a95f55530404e4d8ddae88",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1354,13 +1570,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/sonnet.git",
-          "commit" : "03293f778862f8e74cb78dc761f1ac1d7f18bbc2",
+          "commit" : "f555617417c7042e89efe1daf3e3faf29828aa31",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1381,13 +1594,34 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcompletion.git",
-          "commit" : "0ae9e0aca98f6bb0e0d79bc0ec3f4967144b2a78",
+          "commit" : "dd91fa903cdc1545ca5b35bcd24cd30f727df6b0",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "ktexttemplate",
+      "buildsystem" : "cmake-ninja",
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/frameworks/ktexttemplate.git",
+          "commit" : "6cb59c39cf85dc313b4aa1c6528965e8324fb1da",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1408,13 +1642,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/ktextwidgets.git",
-          "commit" : "243c9739e67216e110b676233a43bad9a107bcf8",
+          "commit" : "56b92713a697f213112af7b4073f057c4a2741b3",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1430,18 +1661,16 @@
       "name" : "kxmlgui",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kxmlgui.git",
-          "commit" : "ec3efcfb66ce051bf278b046b31f440642568e32",
+          "commit" : "df1230402980b9284c6a0c7f0038a3ed57c4d78a",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1457,8 +1686,8 @@
       "name" : "perl-uri-escape",
       "sources" : [
         {
-          "url" : "https://cpan.metacpan.org/authors/id/E/ET/ETHER/URI-1.74.tar.gz",
-          "sha256" : "a9c254f45f89cb1dd946b689dfe433095404532a4543bdaab0b71ce0fdcdd53d",
+          "url" : "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.31.tar.gz",
+          "sha256" : "b9c4d58b2614b8611ae03a95a6d60ed996f4b311ef3cd5a937b92f1825ecc564",
           "type" : "archive"
         },
         {
@@ -1490,13 +1719,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kdoctools.git",
-          "commit" : "90066c2f68179b7ca6d3f09f0f176447bcceb7c4",
+          "commit" : "6ffe23978184b430379a83dbe5e09c22f7975b22",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1517,13 +1743,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kpackage.git",
-          "commit" : "f599910ce9a45eb347250f71493d54b489733353",
+          "commit" : "1e0636cc34b784b2f3a25db9430b322e36b515dc",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1544,13 +1767,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kbookmarks.git",
-          "commit" : "e5a15b580047a78586b21b8ea2194599d93cea55",
+          "commit" : "e84ec990287d0a4601ad373e1f0271ef267146d8",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1571,13 +1791,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kfilemetadata.git",
-          "commit" : "a372f7fba42c15a9e43589237ba431eb7ec7f5e6",
+          "commit" : "77e2f4b406965b9afa30c45c45f1a9e072f5720c",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1590,59 +1807,54 @@
       ],
       "modules" : [
         {
-          "name" : "taglib",
+          "name" : "utfcpp",
           "buildsystem" : "cmake-ninja",
           "config-opts" : [
-            "-DBUILD_SHARED_LIBS=ON",
-            "-DLIB_INSTALL_DIR:PATH=/usr/lib/x86_64-linux-gnu"
+            "-DUTF8_TESTS=OFF"
           ],
           "sources" : [
             {
-              "url" : "https://taglib.github.io/releases/taglib-1.13.1.tar.gz",
-              "sha256" : "c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b",
+              "url" : "https://github.com/nemtrif/utfcpp/archive/refs/tags/v4.0.9.tar.gz",
+              "sha256" : "397a9a2a6ed5238f854f490b0177b840abc6b62571ec3e07baa0bb94d3f14d5a",
               "x-checker-data" : {
                 "type" : "anitya",
-                "project-id" : 1982,
-                "stable-only" : true,
-                "url-template" : "https://taglib.github.io/releases/taglib-$version.tar.gz",
-                "versions" : {
-                  "<" : "2"
-                }
+                "project-id" : 20545,
+                "url-template" : "https://github.com/nemtrif/utfcpp/archive/refs/tags/v$version.tar.gz"
               },
               "type" : "archive"
             },
             {
               "commands" : [
-                "LICENSES='COPYING*' install-licenses.sh"
+                "LICENSES='LICENSE' install-licenses.sh"
               ],
               "type" : "shell"
             }
+          ],
+          "cleanup" : [
+            "*"
           ]
         }
       ]
     },
     {
-      "name" : "phonon",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF",
-        "-DPHONON_BUILD_QT6=OFF",
-        "-DPHONON_BUILD_QT5=ON",
-        "-DPHONON_BUILD_PHONON4QT5=ON"
-      ],
+      "name" : "canberra",
       "sources" : [
         {
-          "url" : "https://invent.kde.org/libraries/phonon.git",
-          "commit" : "712124ab04e1fd297cfde3e6a06da74caee526b3",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v([\\d.]+)$"
-          },
-          "type" : "git"
+          "url" : "https://salsa.debian.org/gnome-team/libcanberra/-/archive/upstream/0.30/libcanberra-upstream-0.30.tar.bz2",
+          "sha256" : "cdceb79c79ce6c56e38fa2075c7fd3a2a5213d65db92483e179eb952a4e138fa",
+          "type" : "archive"
+        },
+        {
+          "path" : "patch/libcanberra-0001-build-sys-Fix-build-with-no-lynx-installed.patch",
+          "type" : "patch"
+        },
+        {
+          "path" : "patch/libcanberra-0002-gtk-Don-t-assume-all-GdkDisplays-are-GdkX11Displays-.patch",
+          "type" : "patch"
         },
         {
           "commands" : [
-            "LICENSES='COPYING*' install-licenses.sh"
+            "LICENSES='LGPL' install-licenses.sh"
           ],
           "type" : "shell"
         }
@@ -1652,18 +1864,16 @@
       "name" : "knotifications",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/knotifications.git",
-          "commit" : "4c8eccf698ef8b045ef69942dfdc11a9470ad9d0",
+          "commit" : "54fd239ab02174fd1d69c1075709e7b4dd10407d",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1684,13 +1894,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kwallet.git",
-          "commit" : "e286480e46e12aed9f68f8d03a7918bbca8b84a3",
+          "commit" : "12fc2d4e002ee8171c4a424ca9227b5b485114ac",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1706,7 +1913,9 @@
           "name" : "qca",
           "buildsystem" : "cmake-ninja",
           "config-opts" : [
-            "-DBUILD_TESTS=OFF"
+            "-DBUILD_TESTS=OFF",
+            "-DQCA_INSTALL_IN_QT_PREFIX=ON",
+            "-DBUILD_WITH_QT6=ON"
           ],
           "sources" : [
             {
@@ -1714,7 +1923,7 @@
               "commit" : "e13bf6cad1805ca4e2fa1e9222736b68a202afd9",
               "x-checker-data" : {
                 "type" : "git",
-                "tag-pattern" : "^v([\\d.]+)$"
+                "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
               },
               "type" : "git"
             },
@@ -1732,18 +1941,16 @@
       "name" : "kjobwidgets",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kjobwidgets.git",
-          "commit" : "4dc6fe27aed70907b9a4b8ce2ed09ef43dd94f8a",
+          "commit" : "8c104ea1375274eb65d7d1d5cb0e4fa175412c15",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1764,13 +1971,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/solid.git",
-          "commit" : "760ab15605985880fb67dfa1ba779889ec8cf888",
+          "commit" : "f67e1930a43a0fd2fad98cd2ed62761ee38105ce",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1791,13 +1995,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kio.git",
-          "commit" : "2534127d81b6bc05193bded6c0bd0c37938145df",
+          "commit" : "eaf58a77771b13beb7561c45a1f125d99f8d8ddc",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1818,13 +2019,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kparts.git",
-          "commit" : "28429a5d63ef0717081b1b088b7546007bbee357",
+          "commit" : "31d608575a5e7d76418b1154d50cd10b09fe5f4c",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1845,68 +2043,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kplotting.git",
-          "commit" : "b0f1bfb1353a1f0a68c757768b77b0a3ddfced67",
+          "commit" : "62a42996be5d07c8a4df731e75611608c2e3d621",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kdesignerplugin",
-      "buildsystem" : "cmake-ninja",
-      "builddir" : true,
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/kdesignerplugin.git",
-          "commit" : "bcff151593c149a35d7c19a723a839938cfc68fa",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='COPYING*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kinit",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/kinit.git",
-          "commit" : "3699fd8df1486e4c3f33c3d3815e03f5403cf889",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1927,13 +2067,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kded.git",
-          "commit" : "3dae76a4a9386fee5b42a6dbb098d8189ab38f47",
+          "commit" : "7eb6ad4d880287ac776a808ceee61e6173548283",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1949,18 +2086,16 @@
       "name" : "kunitconversion",
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
-        "-DBUILD_TESTING=OFF"
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kunitconversion.git",
-          "commit" : "3a2b322dabadc1870ea46cc16cdb1189fe4a3a47",
+          "commit" : "99780005f71e6cb03b8780f61b36e4f09f54d30d",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -1981,13 +2116,61 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kdeclarative.git",
-          "commit" : "11bf94cadac03bf8f7ad33a1a62107c92cf00b1d",
+          "commit" : "3e1e3cfea3f5c56d1e2a8e5e52c7d14aca0efdc0",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "plasma-activities",
+      "buildsystem" : "cmake-ninja",
+      "builddir" : true,
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF",
+        "-DPLASMA_ACTIVITIES_LIBRARY_ONLY=ON"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/plasma/plasma-activities.git",
+          "commit" : "279f34d13fc4d210dd3e3ece601ffa205a98faef",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "kirigami",
+      "buildsystem" : "cmake-ninja",
+      "builddir" : true,
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/frameworks/kirigami.git",
+          "commit" : "3a4978da239ffc2e6a76b9e65b10e83fae60cf99",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2008,13 +2191,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcmutils.git",
-          "commit" : "a7130560e1f8dc5e2797995142ed12afd22bc42b",
+          "commit" : "748edfa2ccd9b82bedc4eec8c7919ad4564daa34",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2036,13 +2216,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/knotifyconfig.git",
-          "commit" : "2b97632dcadf66858d33262783b721f10dfb659a",
+          "commit" : "1f1fd21348e117aa7782a458d1525a5a0faa7d4a",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2063,13 +2240,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/knewstuff.git",
-          "commit" : "a70c53888a4d6a99be6f97c06619604857ea2203",
+          "commit" : "6e2583102edfbcab41d4b774a141b3874de09650",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2090,13 +2264,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kidletime.git",
-          "commit" : "3b87c13806904b1127b31b382902b72028c2229c",
+          "commit" : "c07e6546eabb8d491ea4f225a2fbc76e97119b27",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2117,13 +2288,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/threadweaver.git",
-          "commit" : "b4053fe7647b635876a28fc7d95af90086531ce8",
+          "commit" : "67fae766c7fea8ed7a41c4fc6b7be52cbb28b5e7",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2144,48 +2312,12 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kitemmodels.git",
-          "commit" : "6f498a6fd29dff86eaf064ffe6c187f28fd8c9df",
+          "commit" : "e8689f68a5b5385d7e487447e1c7dc4a47d295a8",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kxmlrpcclient",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/kxmlrpcclient.git",
-          "commit" : "57e2e4e81119551a391684d55883f10e5035270a",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
         }
       ]
     },
@@ -2198,13 +2330,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kdnssd.git",
-          "commit" : "daf6f70c92d5c97a3228ce09baa149d5cf09596b",
+          "commit" : "2e9e18e59aa88c5a52fff0b646e0dc1e86b63b24",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2225,13 +2354,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kquickcharts.git",
-          "commit" : "910ca67bbebdf46c2ef822b59b99c2ec43efbe60",
+          "commit" : "971cb57ebc77d5ef2bda48ba34b57be9a6b6a4c6",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2252,13 +2378,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/syntax-highlighting.git",
-          "commit" : "5214d9c394f04b296ce97e4362dba3349c3c9032",
+          "commit" : "3d9810494eee77edd70ee84394348d14aa0455d9",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2278,14 +2401,20 @@
       ],
       "sources" : [
         {
-          "url" : "https://github.com/editorconfig/editorconfig-core-c/archive/refs/tags/v0.12.9.tar.gz",
-          "sha256" : "4aaa4e3883332aac7ec19c169dcf128f5f0f963f61d09beb299eb2bce5944e2c",
+          "url" : "https://github.com/editorconfig/editorconfig-core-c/archive/refs/tags/v0.12.10.tar.gz",
+          "sha256" : "ab9f897a90fb36cfc34e5b67221e55ab0e3119b3512de8e31029d376c6bab870",
           "x-checker-data" : {
             "type" : "anitya",
             "project-id" : 14833,
             "url-template" : "https://github.com/editorconfig/editorconfig-core-c/archive/refs/tags/v$version.tar.gz"
           },
           "type" : "archive"
+        },
+        {
+          "commands" : [
+            "sed -e 's|-Werror||' -i src/CMakeLists.txt"
+          ],
+          "type" : "shell"
         },
         {
           "commands" : [
@@ -2312,13 +2441,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/ktexteditor.git",
-          "commit" : "4060ebe4c3df74071794a0adf1a6f992bfcf1710",
+          "commit" : "96b071b8b5edc69845f633222cb873267dfb9d59",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2340,40 +2466,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/frameworkintegration.git",
-          "commit" : "e289d308d722e70352c82ab80c2d15d746a3f73d",
+          "commit" : "326e52333d9469a9c2fa27bf8cded32a0db3940d",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kemoticons",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/kemoticons.git",
-          "commit" : "46f8df18e2b97109fdf7a09e70807ea113757e5a",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2394,13 +2490,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kpty.git",
-          "commit" : "b5997004299899a8bf1969a7923423f1489ca3bd",
+          "commit" : "943dfb8092a51750355c8587935a81b6980a8b25",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2420,14 +2513,11 @@
       ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/frameworks/kwayland.git",
-          "commit" : "357df3a1b1ada98c7d03b936c611acc0a2a5f66b",
+          "url" : "https://invent.kde.org/plasma/kwayland.git",
+          "commit" : "59a0e4ac4a1444d1134c30de041eda86d6e7981f",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
           },
           "type" : "git"
         },
@@ -2440,30 +2530,22 @@
       ]
     },
     {
-      "name" : "kirigami",
+      "name" : "kirigami-addons",
       "buildsystem" : "cmake-ninja",
-      "builddir" : true,
       "config-opts" : [
         "-DBUILD_TESTING=OFF"
       ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/frameworks/kirigami.git",
-          "commit" : "3aff3f3252202c7962a8e2556b8c0b794016bc8c",
+          "url" : "https://download.kde.org/stable/kirigami-addons/kirigami-addons-1.12.0.tar.xz",
+          "sha256" : "513051dff8417da1819d6ae89d6c21a03654c9a60891df60df6aba13df19d21b",
           "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "type" : "anitya",
+            "project-id" : 242933,
+            "stable-only" : true,
+            "url-template" : "https://download.kde.org/stable/kirigami-addons/kirigami-addons-$version.tar.xz"
           },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
+          "type" : "archive"
         }
       ]
     },
@@ -2477,42 +2559,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/qqc2-desktop-style.git",
-          "commit" : "c10793bdeddc3eba0593441b792f7e420aef9521",
+          "commit" : "6f4c0ecb4e14b7b6a7cbe57ae2db4b24c953646a",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kactivities",
-      "buildsystem" : "cmake-ninja",
-      "builddir" : true,
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF",
-        "-DKACTIVITIES_LIBRARY_ONLY=ON"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/kactivities.git",
-          "commit" : "28ffcff15a8b1bfcada28bb2896a085fec78df76",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2534,13 +2584,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcontacts.git",
-          "commit" : "b36aae018c430a28c3128aa51183eaea6cd26c6f",
+          "commit" : "c94d4836cdff120f57ca0a2204cd575acb33ecf1",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2562,13 +2609,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kcalendarcore.git",
-          "commit" : "2fa5c42d7d29a33193a8a55233abd7cdb8ab1d31",
+          "commit" : "deab468428d9acd4827ceac12ff30b2d98c2238e",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2596,7 +2640,7 @@
               "commit" : "3e2a2b8088a31404adb77b9616d3630a2c6a73f9",
               "x-checker-data" : {
                 "type" : "git",
-                "tag-pattern" : "^v([\\d.]+)$"
+                "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
               },
               "type" : "git"
             },
@@ -2620,13 +2664,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kholidays.git",
-          "commit" : "6c1109680b3374d911da7dd205f9e41c999aa68f",
+          "commit" : "a1d6f12f38f534e07e6d0188ef95cbdd133a3d02",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2647,13 +2688,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/prison.git",
-          "commit" : "6025d4f1f4be7b0f844974304951370d2209860e",
+          "commit" : "6d524f5113f3ab000a098d9bb1a2d904c8b9863f",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2671,7 +2709,8 @@
           "builddir" : true,
           "config-opts" : [
             "-DBUILD_SHARED_LIBS=ON",
-            "-DWITH_TOOLS=OFF"
+            "-DWITH_TOOLS=OFF",
+            "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
           ],
           "sources" : [
             {
@@ -2702,11 +2741,6 @@
             {
               "url" : "https://github.com/dmtx/libdmtx/archive/v0.7.8.tar.gz",
               "sha256" : "2394bf1d1d693a5a4ca3cfcc1bb28a4d878bdb831ea9ca8f3d5c995d274bdc39",
-              "x-checker-data" : {
-                "type" : "anitya",
-                "project-id" : 12833,
-                "url-template" : "https://github.com/dmtx/libdmtx/archive/v$version.tar.gz"
-              },
               "type" : "archive"
             },
             {
@@ -2735,6 +2769,10 @@
               "x-checker-data" : {
                 "type" : "anitya",
                 "project-id" : 101246,
+                "stable-only" : true,
+                "versions" : {
+                  "<" : "3.0.0"
+                },
                 "url-template" : "https://github.com/zxing-cpp/zxing-cpp/archive/v$version.tar.gz"
               },
               "type" : "archive"
@@ -2745,6 +2783,12 @@
               ],
               "type" : "shell"
             }
+          ],
+          "cleanup" : [
+            "/include/ZXing",
+            "*.pc",
+            "/lib/*/cmake/ZXing",
+            "libZXing.so"
           ]
         }
       ]
@@ -2758,13 +2802,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/syndication.git",
-          "commit" : "f0315090b04ebc69b6c6d74c30eb84efc071a752",
+          "commit" : "4fbd942140b53b74fad1f2d1dfbb9df5ebafd4bc",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2785,13 +2826,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/purpose.git",
-          "commit" : "5b8aaea33c2fc512733f0ad590a82992709c47e7",
+          "commit" : "2ddaaf74ce6caabc7bf515d1621ba9cc7224b7e0",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2812,13 +2850,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kdav.git",
-          "commit" : "cd8dd70758646fde0db3a76fe62c7120ad1af106",
+          "commit" : "c1761d3799261d66c75c606006e8e2aa1c2723d6",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v6([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2831,7 +2866,7 @@
       ]
     },
     {
-      "name" : "plasma-framework",
+      "name" : "ksvg",
       "buildsystem" : "cmake-ninja",
       "builddir" : true,
       "config-opts" : [
@@ -2839,14 +2874,11 @@
       ],
       "sources" : [
         {
-          "url" : "https://invent.kde.org/frameworks/plasma-framework.git",
-          "commit" : "beea33b18843df67a8b1a0312bf7b259f273b1e0",
+          "url" : "https://invent.kde.org/frameworks/ksvg.git",
+          "commit" : "5a5709aadc32b9831b08829b3ce1865c7e7711a5",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2856,37 +2888,6 @@
           ],
           "type" : "shell"
         }
-      ]
-    },
-    {
-      "name" : "breeze-icons",
-      "buildsystem" : "cmake-ninja",
-      "builddir" : true,
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/frameworks/breeze-icons.git",
-          "commit" : "e9f16effa13a5a237542f6c527b0421b58b21b80",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='COPYING*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ],
-      "cleanup-platform" : [
-        "*.rcc"
       ]
     },
     {
@@ -2900,13 +2901,10 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/kimageformats.git",
-          "commit" : "79bc12068aea0e162dd4b0643189e281d5b03991",
+          "commit" : "dfdf8ae1df9c86d498bf5f3018c08a258d2d448a",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
           },
           "type" : "git"
         },
@@ -2928,13 +2926,89 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/frameworks/bluez-qt.git",
-          "commit" : "c4564d8e0264e5ad21385408bcd9528f9a3e712f",
+          "commit" : "3661192d5208c79713d9eef18a30173ee98e6cfa",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v5\\.([\\d.]+)$",
-            "versions" : {
-              "<" : "245.0"
-            }
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "kstatusnotifieritem",
+      "buildsystem" : "cmake-ninja",
+      "builddir" : true,
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF",
+        "-DBUILD_PYTHON_BINDINGS=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/frameworks/kstatusnotifieritem.git",
+          "commit" : "e9e0c52abd301758e157e6c6ab16d194c16f033e",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d.]+)$"
+          },
+          "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "qcoro",
+      "buildsystem" : "cmake-ninja",
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=ON"
+      ],
+      "sources" : [
+        {
+          "url" : "https://github.com/danvratil/qcoro/archive/refs/tags/v0.13.0.tar.gz",
+          "sha256" : "4bff7513c5c8e301b66308df05795043b1792ed16381a484e5c990171b8ff19e",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 236236,
+            "stable-only" : true,
+            "url-template" : "https://github.com/danvratil/qcoro/archive/refs/tags/v$version.tar.gz"
+          },
+          "type" : "archive"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "plasma-activities-stats",
+      "buildsystem" : "cmake-ninja",
+      "builddir" : true,
+      "config-opts" : [
+        "-DBUILD_TESTING=OFF"
+      ],
+      "sources" : [
+        {
+          "url" : "https://invent.kde.org/plasma/plasma-activities-stats.git",
+          "commit" : "8cd2dd2900e7681a9354b0d45daca9cc3f71887a",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
           },
           "type" : "git"
         },
@@ -2951,18 +3025,17 @@
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
         "-DBUILD_TESTING=OFF",
-        "-DBUILD_ACTIVITIES=OFF",
-        "-DKF6_COMPAT_BUILD=OFF"
+        "-DBUILD_WITH_QT6=ON"
       ],
       "sources" : [
         {
-          "url" : "https://download.kde.org/stable/release-service/24.02.2/src/kio-extras-kf5-24.02.2.tar.xz",
-          "sha256" : "a9aaf58f3b802c8341bba1ceb95054f915059ea447f59ffc7b933cca71b12ac9",
+          "url" : "https://download.kde.org/stable/release-service/25.12.3/src/kio-extras-25.12.3.tar.xz",
+          "sha256" : "b161e363320f96cffba0195e4045a88049fc3c5b93272532dce5ab6ce886916a",
           "x-checker-data" : {
             "type" : "anitya",
             "project-id" : 8763,
             "stable-only" : true,
-            "url-template" : "https://download.kde.org/stable/release-service/$version/src/kio-extras-kf5-$version.tar.xz"
+            "url-template" : "https://download.kde.org/stable/release-service/$version/src/kio-extras-$version.tar.xz"
           },
           "type" : "archive"
         },
@@ -2979,15 +3052,19 @@
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
         "-DBUILD_TESTING=OFF",
-        "-DBUILD_QT5=ON",
-        "-DBUILD_QT6=OFF",
         "-DWITH_DECORATIONS=OFF",
-        "-DWITH_WALLPAPERS=OFF"
+        "-DWITH_WALLPAPERS=OFF",
+        "-DBUILD_QT5=OFF",
+        "-DBUILD_QT6=ON"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/plasma/breeze.git",
-          "commit" : "e3afac441eae5d8e5fabcab62a6312a8df25def5",
+          "commit" : "2dea6fc1e2ef59d7dec5b77dba873754951e1656",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
+          },
           "type" : "git"
         },
         {
@@ -3003,84 +3080,16 @@
       "buildsystem" : "cmake-ninja",
       "config-opts" : [
         "-DBUILD_TESTING=OFF",
-        "-DBUILD_QT5=ON",
-        "-DBUILD_QT6=OFF"
+        "-DBUILD_QT5=OFF",
+        "-DBUILD_QT6=ON"
       ],
       "sources" : [
         {
           "url" : "https://invent.kde.org/plasma/plasma-integration.git",
-          "commit" : "10aec58a3e2cf0fa4b95b0e9562fecd2c95ee24f",
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "kwayland-integration",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/plasma/kwayland-integration.git",
-          "commit" : "4b8584598726b8913e22dc1d369ce55ffa9c01ef",
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "phonon-gstreamer",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DBUILD_TESTING=OFF",
-        "-DPHONON_BUILD_PHONON4QT5=ON"
-      ],
-      "sources" : [
-        {
-          "url" : "https://invent.kde.org/libraries/phonon-gstreamer.git",
-          "commit" : "9c868d623d560418f6f6a513cf37667ced558c5b",
+          "commit" : "3b694454e0fe883575f72e3a96c5b4142606e8d6",
           "x-checker-data" : {
             "type" : "git",
-            "tag-pattern" : "^v([\\d.]+)$"
-          },
-          "type" : "git"
-        },
-        {
-          "commands" : [
-            "LICENSES='COPYING*' install-licenses.sh"
-          ],
-          "type" : "shell"
-        }
-      ]
-    },
-    {
-      "name" : "fcitx5-platforminputcontext",
-      "buildsystem" : "cmake-ninja",
-      "config-opts" : [
-        "-DENABLE_QT4=OFF",
-        "-DENABLE_QT6=OFF",
-        "-DENABLE_QT5=ON",
-        "-DBUILD_ONLY_PLUGIN=ON"
-      ],
-      "sources" : [
-        {
-          "url" : "https://github.com/fcitx/fcitx5-qt",
-          "commit" : "c5e63ba8131f17c9d2bb0f21b3dea80a871e7e18",
-          "x-checker-data" : {
-            "type" : "git",
-            "tag-pattern" : "^([\\d.]+)$"
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
           },
           "type" : "git"
         },
@@ -3102,8 +3111,35 @@
       "sources" : [
         {
           "url" : "https://invent.kde.org/plasma/qqc2-breeze-style.git",
-          "commit" : "752f8636203df7c358a14d5312f304d79437d869",
+          "commit" : "206512458ef88c32495a73476a22cec41e454f72",
+          "x-checker-data" : {
+            "type" : "git",
+            "tag-pattern" : "^v([\\d]+\\.[\\d]+\\.(?:[0-8]?[0-9]))$"
+          },
           "type" : "git"
+        },
+        {
+          "commands" : [
+            "install-licenses.sh"
+          ],
+          "type" : "shell"
+        }
+      ]
+    },
+    {
+      "name" : "ocean-sound-theme",
+      "buildsystem" : "cmake-ninja",
+      "sources" : [
+        {
+          "url" : "https://download.kde.org/stable/plasma/6.6.3/ocean-sound-theme-6.6.3.tar.xz",
+          "sha256" : "a879429433796e611206e94aed70c506618ace9bf492a3f2ff9d771087b6f808",
+          "x-checker-data" : {
+            "type" : "anitya",
+            "project-id" : 8761,
+            "stable-only" : true,
+            "url-template" : "https://download.kde.org/stable/plasma/$version/ocean-sound-theme-$version.tar.xz"
+          },
+          "type" : "archive"
         },
         {
           "commands" : [
@@ -3152,6 +3188,36 @@
       ]
     }
   ],
+  "cleanup" : [
+    "/man",
+    "/share/man",
+    "/lib/systemd",
+    "*.la"
+  ],
+  "cleanup-commands" : [
+    "/usr/libexec/freedesktop-post.sh",
+    "mkdir -p /usr/lib/debug/usr/lib/i386-linux-gnu"
+  ],
+  "cleanup-platform-commands" : [
+    "/usr/libexec/freedesktop-post.sh"
+  ],
+  "cleanup-platform" : [
+    "*.a",
+    "*.cmake",
+    "*.prl",
+    "*.qmltypes",
+    "/include",
+    "/lib/*/cmake",
+    "/lib/*/pkgconfig",
+    "/lib/metatypes",
+    "/lib/mkspecs",
+    "/lib/pkgconfig",
+    "/mkspecs",
+    "/share/aclocal",
+    "/share/pkgconfig",
+    "/share/runtime/docs",
+    "kde-qmlmodule.version"
+  ],
   "build-runtime" : true,
   "sdk-extensions" : [
     "org.freedesktop.Sdk.Debug",
@@ -3163,7 +3229,7 @@
   ],
   "finish-args" : [
     "--env=GI_TYPELIB_PATH=/app/lib/girepository-1.0",
-    "--env=GST_PLUGIN_PATH=/app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0",
+    "--env=GST_PLUGIN_PATH=/app/lib/gstreamer-1.0:/usr/lib/extensions/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/codecs-extra/lib/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0",
     "--env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share",
     "--env=__EGL_EXTERNAL_PLATFORM_CONFIG_DIRS=/etc/egl/egl_external_platform.d:/usr/lib/x86_64-linux-gnu/GL/egl/egl_external_platform.d:/usr/share/egl/egl_external_platform.d",
     "--env=QT_PLUGIN_PATH=/app/lib/plugins:/usr/share/runtime/lib/plugins",
@@ -3176,8 +3242,8 @@
     "--talk-name=com.canonical.AppMenu.Registrar",
     "--talk-name=org.kde.kconfig.notify",
     "--talk-name=org.kde.KGlobalSettings",
-    "--sdk=org.kde.Sdk//5.15-24.08",
-    "--runtime=org.kde.Platform//5.15-24.08"
+    "--sdk=org.kde.Sdk//6.10",
+    "--runtime=org.kde.Platform//6.10"
   ],
   "inherit-extensions" : [
     "org.freedesktop.Platform.GL",
@@ -3185,7 +3251,8 @@
     "org.freedesktop.Platform.GStreamer",
     "org.freedesktop.Platform.Icontheme",
     "org.freedesktop.Platform.VAAPI.Intel",
-    "org.freedesktop.Platform.openh264",
+    "org.freedesktop.Platform.VAAPI.nvidia",
+    "org.freedesktop.Platform.codecs-extra",
     "org.freedesktop.Platform.VulkanLayer",
     "org.gtk.Gtk3theme"
   ],
@@ -3193,13 +3260,21 @@
     "org.freedesktop.Sdk.Extension"
   ],
   "add-extensions" : {
+    "org.inqlude.WaylandDecoration" : {
+      "directory" : "share/runtime/lib/plugins/",
+      "add-ld-path" : "lib",
+      "download-if" : "on-xdg-desktop-GNOME;on-xdg-desktop-GNOME-classic",
+      "merge-dirs" : "wayland-decoration-client",
+      "no-autodownload" : true,
+      "version" : "6.10"
+    },
     "org.kde.KStyle" : {
       "directory" : "share/runtime/lib/plugins/",
       "add-ld-path" : "lib",
       "download-if" : "active-gtk-theme",
       "merge-dirs" : "styles",
       "no-autodownload" : true,
-      "version" : "5.15-24.08"
+      "version" : "6.10"
     },
     "org.kde.PlatformInputContexts" : {
       "directory" : "share/runtime/lib/plugins/",
@@ -3208,15 +3283,7 @@
       "merge-dirs" : "platforminputcontexts",
       "no-autodownload" : true,
       "subdirectories" : true,
-      "version" : "5.15-24.08"
-    },
-    "org.kde.PlatformTheme" : {
-      "directory" : "share/runtime/lib/plugins/",
-      "add-ld-path" : "lib",
-      "download-if" : "on-xdg-desktop-GNOME;on-xdg-desktop-GNOME-classic",
-      "merge-dirs" : "platformthemes",
-      "no-autodownload" : true,
-      "version" : "5.15-24.08"
+      "version" : "6.10"
     },
     "org.kde.Sdk.Docs" : {
       "directory" : "share/runtime/docs",
@@ -3224,15 +3291,7 @@
       "autodelete" : true,
       "no-autodownload" : true,
       "subdirectories" : true
-    },
-    "org.kde.WaylandDecoration" : {
-      "directory" : "share/runtime/lib/plugins/",
-      "add-ld-path" : "lib",
-      "download-if" : "on-xdg-desktop-GNOME;on-xdg-desktop-GNOME-classic",
-      "merge-dirs" : "wayland-decoration-client",
-      "no-autodownload" : true,
-      "version" : "5.15-24.08"
     }
   },
-  "source-date-epoch" : 1759251448
+  "source-date-epoch" : 1775088796
 }
